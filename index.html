@@ -1,38 +1,133 @@
 <!DOCTYPE html>
-<html lang="en"> 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Meals for every day</title>
-</head>
-<body>
+    <!-- Fuentes google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap css -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <header class="container">
+      <div class="row">
+        <nav class="menu1 flex col">
+          <a href="#">HOME</a>
+          <a href="#">RECEPIES</a>
+        </nav>
+        <div class="logo col-2 flex">
+          <img src="img/logo-Spoon&Whisk.png" />
+        </div>
+        <nav class="menu1 flex col">
+          <a href="#">HOME</a>
+          <a href="#">RECEPIES</a>
+        </nav>
+      </div>
+    </header>
+    <div class="container">
+      <div class="row">
+        <div class="col flex img-home">
+          <img src="img/disch.png" />
+        </div>
+        <div class="col form-home flex">
+          <h1>what are we going to eat today?</h1>
+          <h4>Vegetarian / Non</h4>
+          <div class="flex space-between">
+            <span>Vegetarian</span>
+            <input type="checkbox" id="vegetarian" name="vegetarian" />
+            <span>Omnivore</span>
+            <input type="checkbox" id="omnivore" name="omnivore" />
+          </div>
+          <h4>Country Style</h4>
+          <input />
+          <h4>Type</h4>
+          <div class="flex space-between">
+            <label class="flex center">
+              <input type="radio" name="type1" value="type1" />
+              <span> Snack</span>
+            </label>
+            <label class="flex center">
+              <input type="radio" name="type1" value="breakfast" />
+              <span> Breakfast</span>
+            </label>
+            <label class="flex center">
+              <input type="radio" name="type1" value="desert" />
+              <span> Desert</span>
+            </label>
+            <label class="flex center">
+              <input type="radio" name="type1" value="garrison" />
+              <span> Garrison</span>
+            </label>
+          </div>
+          <!-- form-home -->
+        </div>
+      </div>
+      <h2>Titulo producto</h2>
+      <div class="row recipe-container">
+        <div class="col-3">
+          <img src="https://www.themealdb.com/images/media/meals/g046bb1663960946.jpg " alt="" />
+        </div>
+        <div class="col recipe-text">
+          <h3>Type</h3> 
+          <h5>Non Vegetarian, Seafood, Japanese Preparation</h5> 
+          <p>STEP 1 TO MAKE
+          SUSHI ROLLS: Pat out some rice. Lay a nori sheet on the mat,
+          shiny-side down. Dip your hands in the vinegared water, then pat
+          handfuls of rice on top in a 1cm thick layer, leaving the furthest
+          edge from you clear.
+          </p>
+        </div>
+      </div>
+      <!--container -->
+    </div>
+
     
-    <h1>Meals for every day</h1>
-    <table>
-      <thead>
-        <tr>
-          <th>Id</th>
-          <th>Name</th>
-          <th>Category</th>
-        </tr>
-      </thead>
-  
-      <tbody id="tbody">
-        <!-- <tr>
+    <div class="container">
+      <div class="row">
+        <h1>Meals for every day</h1>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Name</th>
+              <th>Category</th>
+            </tr>
+          </thead>
+
+           <tbody id="tbody">
+          <!--   <tr>
           <td>France</td>
           <td>Paris</td>
           <td>70 milions</td>
-        </tr> -->
-      </tbody>
-    </table>
-  
-  
-    <div id="container"></div>
-  
+                 </tr> -->
+          </tbody>
+
+        </table>
+
+      </div>
+    </div>
+
+    <footer>All rights reserved</footer>
+    <!-- Bootstrap Javascript -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
     <script src="js/database1.js"></script>
     <script src="js/main.js"></script>
-
-</body>
-
-
+  </body>
 </html>
