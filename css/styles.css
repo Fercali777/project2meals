@@ -55,14 +55,14 @@ footer {
 
 
 /* Java afects ----------------------------------------------------------------------------- */
-.recipe-container {
+#recipe-container {
     background-color: #FFF3DF;
 }
-.recipe-container img{
+#recipe-container img{
    max-width: 100%;
    height: auto;
 }
-.recipe-container :first-child {
+#recipe-container :first-child {
     padding-left:0px;
 }
 .recipe-text {

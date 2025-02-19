@@ -73,7 +73,7 @@
 //   tr.appendChild(td6)
 //   tr.appendChild(td7)
 
-
+//   tbody.appendChild(tr)
 
 
 // }
@@ -81,11 +81,32 @@
 for (let i = 0 ; i < meals.length ; i++){
     console.log ("im looping");
     const tituloRecipe = document.createElement("h1");
+    const containerRecipe = document.createElement("div");
+    const containerCol = document.createElement("div");
+    const imgRecipe = document.createElement("img");
 
     tituloRecipe.textContent = meals[i].strMeal;
-
+    containerRecipe.className = "row";
+    containerCol.className = "col-3";
+    containerCol.id = "col-3";
+    containerRecipe.id = "recipe-container";
+    containerRecipe.textContent = "Here the text";
+    imgRecipe.src = "https://www.themealdb.com/images/media/meals/tkxquw1628771028.jpg";
+    
     document.getElementById("contenedorRecipe").appendChild(tituloRecipe);
+    document.getElementById("contenedorRecipe").appendChild(containerRecipe);
+    document.getElementById("recipe-container").appendChild(containerCol);
+    document.getElementById("recipe-container").appendChild(imgRecipe);
+
+    containerRecipe.appendChild(containerCol);
+    containerCol.appendChild(imgRecipe);
+    // recipe-container2.appendChild(div)
+
+    // document.getElementById("javaH1").textContent = meals[1].strMeal;
+    
 }
+
+
 
     // // 1. Crear el elemento <h1>
     // const titulo = document.createElement("h1");
@@ -99,4 +120,18 @@ for (let i = 0 ; i < meals.length ; i++){
 
     // Insertar texto en un contenedor
     // document.getElementById("javaH1").textContent = meals[1].strMeal;
+
+
+        // // 1. Crear el elemento <img>
+        // const imagen = document.createElement("img");
+
+        // // 2. Asignar la fuente de la imagen
+        // imagen.src = "https://www.themealdb.com/images/media/meals/tkxquw1628771028.jpg"; // Imagen de prueba
+    
+        // // 3. Añadir atributos adicionales
+        // imagen.alt = "Imagen de ejemplo";
+        // imagen.width = 300; // Ancho de 300px
+    
+        // // 4. Insertar la imagen en el div con id="contenedor"
+        // document.getElementById("contenedorRecipe").appendChild(imagen);
 
