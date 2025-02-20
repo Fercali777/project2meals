@@ -57,6 +57,7 @@ footer {
 /* Java afects ----------------------------------------------------------------------------- */
 #recipe-container {
     background-color: #FFF3DF;
+    margin-bottom: 40px;
 }
 #recipe-container img{
    max-width: 100%;

@@ -83,23 +83,41 @@ for (let i = 0 ; i < meals.length ; i++){
     const tituloRecipe = document.createElement("h1");
     const containerRecipe = document.createElement("div");
     const containerCol = document.createElement("div");
+    const containerCol2 = document.createElement("div");
+    const textType = document.createElement("h4");
+    const textTypeCont = document.createElement("h5");
+    const textIngredients = document.createElement("h4");
     const imgRecipe = document.createElement("img");
 
     tituloRecipe.textContent = meals[i].strMeal;
+    containerRecipe.id = "recipe-container";
     containerRecipe.className = "row";
     containerCol.className = "col-3";
-    containerCol.id = "col-3";
-    containerRecipe.id = "recipe-container";
-    containerRecipe.textContent = "Here the text";
-    imgRecipe.src = "https://www.themealdb.com/images/media/meals/tkxquw1628771028.jpg";
+    containerCol2.className = "col recipe-text";
+    containerCol2.id = "recipe-text";
+    textType.textContent = "Type";
+    textTypeCont.textContent = meals[i].strCategory + ", " + meals[i].strArea ;
+    textIngredients.textContent = "Ingredients";
+    // containerRecipe.textContent = "Here the text";
+    imgRecipe.src = meals[i].strMealThumb;
     
     document.getElementById("contenedorRecipe").appendChild(tituloRecipe);
     document.getElementById("contenedorRecipe").appendChild(containerRecipe);
     document.getElementById("recipe-container").appendChild(containerCol);
+    document.getElementById("recipe-container").appendChild(containerCol2);
     document.getElementById("recipe-container").appendChild(imgRecipe);
+    document.getElementById("recipe-text").appendChild(textType);
+    document.getElementById("recipe-text").appendChild(textTypeCont);
+    document.getElementById("recipe-text").appendChild(textIngredients);
 
     containerRecipe.appendChild(containerCol);
+    containerRecipe.appendChild(containerCol2);
     containerCol.appendChild(imgRecipe);
+    // containerCol2.appendChild(textType);
+
+
+
+
     // recipe-container2.appendChild(div)
 
     // document.getElementById("javaH1").textContent = meals[1].strMeal;
