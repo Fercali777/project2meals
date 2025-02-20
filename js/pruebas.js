@@ -79,6 +79,25 @@
 // }
 
 for (let i = 0 ; i < meals.length ; i++){
+
+ 
+
+// Ingredients table
+    const meal = meals[i]; 
+    const ingredients = [];
+    for (let i = 0; i <= 20; i++) {
+      const ingredient = meal[`strIngredient${i}`]; 
+      if (ingredient && ingredient !== "") { 
+        ingredients.push(ingredient);
+      }
+    }
+    console.log(ingredients);
+
+// Ingredients table
+
+
+
+
     console.log ("im looping");
     const tituloRecipe = document.createElement("h1");
     const containerRecipe = document.createElement("div");
@@ -114,6 +133,9 @@ for (let i = 0 ; i < meals.length ; i++){
     containerRecipe.appendChild(containerCol2);
     containerCol.appendChild(imgRecipe);
     // containerCol2.appendChild(textType);
+
+
+
 
 
 
