@@ -82,18 +82,7 @@ for (let i = 0 ; i < meals.length ; i++){
 
  
 
-// Ingredients table
-    const meal = meals[i]; 
-    const ingredients = [];
-    for (let i = 0; i <= 20; i++) {
-      const ingredient = meal[`strIngredient${i}`]; 
-      if (ingredient && ingredient !== "") { 
-        ingredients.push(ingredient);
-      }
-    }
-    console.log(ingredients);
 
-// Ingredients table
 
 
 
@@ -106,6 +95,7 @@ for (let i = 0 ; i < meals.length ; i++){
     const textType = document.createElement("h4");
     const textTypeCont = document.createElement("h5");
     const textIngredients = document.createElement("h4");
+    const containerIngredients = document.createElement("div");
     const imgRecipe = document.createElement("img");
 
     tituloRecipe.textContent = meals[i].strMeal;
@@ -117,6 +107,7 @@ for (let i = 0 ; i < meals.length ; i++){
     textType.textContent = "Type";
     textTypeCont.textContent = meals[i].strCategory + ", " + meals[i].strArea ;
     textIngredients.textContent = "Ingredients";
+    containerIngredients.id = "containerIngredients";
     // containerRecipe.textContent = "Here the text";
     imgRecipe.src = meals[i].strMealThumb;
     
@@ -128,6 +119,7 @@ for (let i = 0 ; i < meals.length ; i++){
     document.getElementById("recipe-text").appendChild(textType);
     document.getElementById("recipe-text").appendChild(textTypeCont);
     document.getElementById("recipe-text").appendChild(textIngredients);
+    document.getElementById("recipe-text").appendChild(containerIngredients);
 
     containerRecipe.appendChild(containerCol);
     containerRecipe.appendChild(containerCol2);
@@ -135,10 +127,43 @@ for (let i = 0 ; i < meals.length ; i++){
     // containerCol2.appendChild(textType);
 
 
+// ------------------------------------------------------------------------
 
 
 
 
+// Ingredients table
+const meal = meals[0]; 
+const ingredients = [];
+const measures = [];
+
+for (let i = 1; i <= 20; i++) {
+  const ingredient = meal[`strIngredient${i}`]; 
+  const measure = meal[`strMeasure${i}`]; 
+  if (ingredient && ingredient !== "") { 
+    ingredients.push(ingredient);
+    measures.push(measure)
+  }
+
+const tri = document.createElement("tr")
+const tdi1 = document.createElement("td")
+const tdi2 = document.createElement("td")
+
+tdi1.innerHTML = ingredient
+tdi2.innerHTML = measure
+tri.appendChild(tdi1)
+tri.appendChild(tdi2)
+containerIngredients.appendChild(tri)
+}
+// console.log(ingredients);
+// console.log(measures);
+// Ingredients table
+
+
+
+
+
+// -----------------------------------------------------------------------------
 
     // recipe-container2.appendChild(div)
 
