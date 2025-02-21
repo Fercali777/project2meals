@@ -6,6 +6,7 @@ header {
     padding: 50px 0px 50px 0px;
 }
 
+
 /* Flexbox----------------------------------------------------------------------- */
 .flex {
     display: flex;
@@ -58,12 +59,13 @@ footer {
 #recipe-container {
     background-color: #FFF3DF;
     margin-bottom: 40px;
+    border-radius: 10px;
 }
 #recipe-container img{
    max-width: 100%;
    height: auto;
 }
-#recipe-container :first-child {
+#recipe-container> :first-child {
     padding-left:0px;
 }
 .recipe-text {
@@ -131,6 +133,22 @@ span {
 .form-home  h4, span{
     color: #FFF3DF;
 }
+
+td, th {
+    
+    font-family: "Poppins", Arial, Helvetica, sans-serif;
+    color: #264653;
+    font-size: 16px;
+    line-height: 28px;
+    font-weight: 300;
+    padding: 5px 15px 2px 15px;
+}
+
+th {
+    font-weight: bold;
+}
+td{background-color: #f5e6cd;}
+
 
 
 
