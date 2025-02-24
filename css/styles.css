@@ -6,6 +6,21 @@ header {
     padding: 50px 0px 50px 0px;
 }
 
+#buttonSearchRecipe {
+    
+    background-color: #FFBF07;
+    border-radius: 10px;
+    border: none;
+    font-family: "Poppins", Arial, Helvetica, sans-serif;
+    color: #264653;
+    font-size: 16px;
+    line-height: 28px;
+    font-weight: 300;
+    margin-top: 20px ;
+
+
+
+}
 
 /* Flexbox----------------------------------------------------------------------- */
 .flex {

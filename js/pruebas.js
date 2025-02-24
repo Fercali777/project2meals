@@ -1,90 +1,66 @@
 
-
-// table from spike
-// const tbody = document.getElementById("tbody")
-// for (let i = 0; i < meals.length; i++) {
-//   const tr = document.createElement("tr")
-//   const td1 = document.createElement("td")
-//   const td2 = document.createElement("td")
-//   const td3 = document.createElement("td")
-//   const td4 = document.createElement("td")
-//   const td5 = document.createElement("td")
-//   const td6 = document.createElement("td")
-//   const td7 = document.createElement("td")
+// meals.filter((mealPr, i, arrey) => {
+//   console.log ("meals pr!", meals);
+//   console.log ("arrey pr!", arrey);
+//   console.log ("meal pr!", mealPr);
+//   console.log ("i pr!", i);
+//   // retorna true para mantener el elemento en el nuevo array
+// });
 
 
-//   td1.innerHTML = meals[i].idMeal
-//   td2.innerHTML = meals[i].strMeal
-//   td3.innerHTML = meals[i].strCategory
-//   td4.innerHTML = meals[i].strArea
-//   td5.innerHTML = meals[i].strTags
-//   td6.innerHTML = meals[i].strIngredient1
-//   td7.innerHTML = meals[i].strInstructions
-
-
- 
-
-//   tr.appendChild(td1)
-//   tr.appendChild(td2)
-//   tr.appendChild(td3)
-//   tr.appendChild(td4)
-//   tr.appendChild(td5)
-//   tr.appendChild(td6)
-//   tr.appendChild(td7)
-
-//   tbody.appendChild(tr)
-// }
+const productos = [
+  { nombre: "Pizza", disponible: true },
+  { nombre: "Hamburguesa", disponible: false },
+  { nombre: "Ensalada", disponible: true }
+];
+const disponibles = productos.filter(producto => producto.disponible);
+console.log("Disponibles", disponibles);
 
 
 
 
-// const tbody = document.getElementById("tbody")
-// for (let i = 0; i < meals.length; i++) {
 
-//   const tbody = document.getElementById("tbody") 
+const vegRecipe = meals.filter(cat => cat.strCategory == "Vegetarian");
 
-
-
-//   const tr = document.createElement("tr")
-//   const td1 = document.createElement("td")
-//   const td2 = document.createElement("td")
-//   const td3 = document.createElement("td")
-//   const td4 = document.createElement("td")
-//   const td5 = document.createElement("td")
-//   const td6 = document.createElement("td")
-//   const td7 = document.createElement("td")
+console.log ("vegRecipe pr!", vegRecipe);
 
 
 
-//   td1.innerHTML = meals[1].idMeal
-//   td2.innerHTML = meals[1].strMeal
-//   td3.innerHTML = meals[1].strCategory
-//   td4.innerHTML = meals[1].strArea
-//   td5.innerHTML = meals[1].strTags
-//   td6.innerHTML = meals[1].strIngredient1
-//   td7.innerHTML = meals[1].strInstructions
+
+// meals.filter((mealPr, i, arrey) => {
+  
+
+  // strCategory: "Vegetarian"
+  // console.log ("arrey pr!", arrey);
+  // console.log ("meal pr!", mealPr);
+  // console.log ("i pr!", i);
+
+// });
 
 
- 
 
-//   tr.appendChild(td1)
-//   tr.appendChild(td2)
-//   tr.appendChild(td3)
-//   tr.appendChild(td4)
-//   tr.appendChild(td5)
-//   tr.appendChild(td6)
-//   tr.appendChild(td7)
+const checkboxVeg = document.getElementById('vegetarian');
 
-//   tbody.appendChild(tr)
+checkboxVeg.addEventListener('change', () => {
+  if (checkboxVeg.checked) {
+    console.log ("vegRecipe pr!", vegRecipe);;
+  } else {
+    console.log('El checkbox no está marcado (false)');
+  }
+});
 
 
-// }
+
+
+const buttonSearch  = document.getElementById("buttonSearchRecipe")
+buttonSearch.addEventListener ("click", loadAllRecipes)
+
+function loadAllRecipes () {
+  console.log ("button clicked");
+
 
 for (let i = 0 ; i < meals.length ; i++){
-
- 
-
-    
+   
     const tituloRecipe = document.createElement("h1");
     const containerRecipe = document.createElement("div");
     const containerCol = document.createElement("div");
@@ -97,7 +73,6 @@ for (let i = 0 ; i < meals.length ; i++){
     const titlePreparation = document.createElement("h4");
     const textPreparation = document.createElement("p");
     
-
     tituloRecipe.textContent = meals[i].strMeal;
     containerRecipe.id = "recipe-container";
     containerRecipe.className = "row";
@@ -112,7 +87,6 @@ for (let i = 0 ; i < meals.length ; i++){
     titlePreparation.textContent = "Preparation";
     textPreparation.textContent = meals[i].strInstructions; 
     // containerRecipe.textContent = "Here the text";
-    
     
     document.getElementById("contenedorRecipe").appendChild(tituloRecipe);
     document.getElementById("contenedorRecipe").appendChild(containerRecipe);
@@ -131,43 +105,25 @@ for (let i = 0 ; i < meals.length ; i++){
     containerCol.appendChild(imgRecipe);
     // containerCol2.appendChild(textType);
 
-
-// ------------------------------------------------------------------------
-
-
-
-
-// Ingredients table
+// Ingredients table -----------------------------------------------------------------------
 const meal = meals[0]; 
 const ingredients = [0];
 const measures = [];
-
-
 
 for (let i = 1 ; i <= ingredients.length ; i++) {
   const ingredient = meal[`strIngredient${i}`]; 
   const measure = meal[`strMeasure${i}`]; 
 
-
-
   if (ingredient && ingredient !== "") { 
     ingredients.push(ingredient);
     measures.push(measure)
   }  
-
-  
-
-
-
 console.log ("Ingredients.length", ingredients.length);  
-
 
 if (i == 1){
 const triT =  document.createElement("tr")
 const thi1 = document.createElement("th")
 const thi2 = document.createElement("th")
-
-
   thi1.textContent = "Ingredient";
   thi2.textContent = "Measure";
   triT.appendChild(thi1)
@@ -175,9 +131,6 @@ const thi2 = document.createElement("th")
   
   containerIngredients.appendChild(triT)
 }
-
-
-
 
 const tri = document.createElement("tr")
 const tdi1 = document.createElement("td")
@@ -190,24 +143,11 @@ tri.appendChild(tdi1)
 tri.appendChild(tdi2)
 
 containerIngredients.appendChild(tri)
+} // end ingredients table loop
+
+} // end recipes loop
+
 }
-// console.log(ingredients);
-// console.log(measures);
-// Ingredients table
-
-
-
-
-
-// -----------------------------------------------------------------------------
-
-    // recipe-container2.appendChild(div)
-
-    // document.getElementById("javaH1").textContent = meals[1].strMeal;
-    
-}
-
-
 
     // // 1. Crear el elemento <h1>
     // const titulo = document.createElement("h1");
