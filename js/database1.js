@@ -1,7 +1,7 @@
 // 20250214142956
 // https://www.themealdb.com/api/json/v1/1/search.php?s=
 
-const meals = [
+let meals = [
   {
     idMeal: "53065",
     strMeal: "Sushi",

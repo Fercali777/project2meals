@@ -1,4 +1,5 @@
 
+// Ejemplo .filter con condicional --------------------------------------------------------------
 // meals.filter((mealPr, i, arrey) => {
 //   console.log ("meals pr!", meals);
 //   console.log ("arrey pr!", arrey);
@@ -7,47 +8,90 @@
 //   // retorna true para mantener el elemento en el nuevo array
 // });
 
-
-const productos = [
-  { nombre: "Pizza", disponible: true },
-  { nombre: "Hamburguesa", disponible: false },
-  { nombre: "Ensalada", disponible: true }
-];
-const disponibles = productos.filter(producto => producto.disponible);
-console.log("Disponibles", disponibles);
-
-
+// Ejemplo .filter 2--------------------------------------------------------------
+// const productos = [
+//   { nombre: "Pizza", disponible: true },
+//   { nombre: "Hamburguesa", disponible: false },
+//   { nombre: "Ensalada", disponible: true }
+// ];
+// const disponibles = productos.filter(producto => producto.disponible);
+// console.log("Disponibles", disponibles);
 
 
+let finalArrey  ;
 
-const vegRecipe = meals.filter(cat => cat.strCategory == "Vegetarian");
-
-console.log ("vegRecipe pr!", vegRecipe);
-
-
+// let vegRecipe = [];
+// let omnRecipe = [];
 
 
-// meals.filter((mealPr, i, arrey) => {
-  
-
-  // strCategory: "Vegetarian"
-  // console.log ("arrey pr!", arrey);
-  // console.log ("meal pr!", mealPr);
-  // console.log ("i pr!", i);
-
+// Example make an .filter with an foreach
+// meals.forEach(cat => {
+//   if (cat.strCategory === "Vegetarian") {
+//     vegRecipe = [...vegRecipe, cat]; // Se crea un nuevo array en cada iteración
+//     finalArrey.push(cat);
+//   }
 // });
 
 
 
-const checkboxVeg = document.getElementById('vegetarian');
+const vegRecipe = meals.filter(cat => cat.strCategory == "Vegetarian");
+console.log ("vegRecipe pr!", vegRecipe);
+const omnRecipe = meals.filter(cat => cat.strCategory !== "Vegetarian");
 
-checkboxVeg.addEventListener('change', () => {
-  if (checkboxVeg.checked) {
-    console.log ("vegRecipe pr!", vegRecipe);;
-  } else {
-    console.log('El checkbox no está marcado (false)');
+
+// Radios-------------------------------------------------------------------------------------
+const radioVeg = document.getElementById('radioVegetarian');
+const radioNonVeg = document.getElementById('radioOmnivore');
+
+
+
+
+radioVeg.addEventListener('change', () => {
+  if (radioVeg.checked) {
+    
+    finalArrey = [];
+    finalArrey = [...vegRecipe];
+    console.log("Vegetariano seleccionado:", meals);
+    console.log ("Final arrey Veg Result!!", finalArrey);
+
   }
 });
+
+//  Detectar cambios cuando se selecciona "No Vegetariano"
+radioNonVeg.addEventListener('change', () => {
+  if (radioNonVeg.checked) {
+    
+    finalArrey = [];
+    finalArrey = [...omnRecipe];
+    console.log("No vegetariano seleccionado:", meals);
+    console.log ("Final arrey no veg Result!!", finalArrey);
+
+  }
+});
+
+
+
+
+
+
+      // const countries = [
+      //   { name: 'Bolivia', landlocked: true },
+      //   { name: 'Chile', landlocked: false },
+      //   { name: 'Paraguay', landlocked: true },
+      //   { name: 'Perú', landlocked: false },
+      // ];
+      // let isLandlocked = true; // Supongamos que el usuario marcó "mostrar sin salida al mar"
+      // let landlockedCountries = [];
+      // countries.forEach(country => {
+      //   if (country.landlocked === isLandlocked) {
+      //     landlockedCountries = [...landlockedCountries, country];
+      //   }
+      // });
+      // console.log(landlockedCountries);
+      // // Salida: [{ name: 'Bolivia', landlocked: true }, { name: 'Paraguay', landlocked: true }]
+
+
+
 
 
 
@@ -56,11 +100,15 @@ const buttonSearch  = document.getElementById("buttonSearchRecipe")
 buttonSearch.addEventListener ("click", loadAllRecipes)
 
 function loadAllRecipes () {
-  console.log ("button clicked");
 
+  meals = finalArrey;
+
+  console.log ("Final Arrey!!!", finalArrey);
+  console.log ("Meals!!!", meals);
+
+  contenedorRecipe.innerHTML = ""
 
 for (let i = 0 ; i < meals.length ; i++){
-   
     const tituloRecipe = document.createElement("h1");
     const containerRecipe = document.createElement("div");
     const containerCol = document.createElement("div");
@@ -118,7 +166,7 @@ for (let i = 1 ; i <= ingredients.length ; i++) {
     ingredients.push(ingredient);
     measures.push(measure)
   }  
-console.log ("Ingredients.length", ingredients.length);  
+// console.log ("Ingredients.length", ingredients.length);  
 
 if (i == 1){
 const triT =  document.createElement("tr")
@@ -144,9 +192,7 @@ tri.appendChild(tdi2)
 
 containerIngredients.appendChild(tri)
 } // end ingredients table loop
-
 } // end recipes loop
-
 }
 
     // // 1. Crear el elemento <h1>

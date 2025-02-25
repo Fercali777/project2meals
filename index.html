@@ -46,28 +46,33 @@
           <h4>Vegetarian / Non</h4>
           <div class="flex space-between">
             <span>Vegetarian</span>
-            <input type="checkbox" id="vegetarian" name="vegetarian" />
+            <input type="radio" id="radioVegetarian" name="radioVegOrNon" value="radioVeg" />
             <span>Omnivore</span>
-            <input type="checkbox" id="omnivore" name="omnivore" />
+            <input type="radio" id="radioOmnivore" name="radioVegOrNon" value="radioNonVeg"/>
           </div>
           <h4>Country Style</h4>
-          <input />
+          <select id="selectCountry">
+            <option value=" ">Select a country</option>
+            <option value="1">1</option>
+            <option value="2">2 </option>
+
+          </select>
           <h4>Type</h4>
           <div class="flex space-between">
             <label class="flex center">
-              <input type="radio" name="type1" value="type1" />
+              <input type="checkbox" name="type" value="snack" />
               <span> Snack</span>
             </label>
             <label class="flex center">
-              <input type="radio" name="type1" value="breakfast" />
+              <input type="checkbox" name="type" value="breakfast" />
               <span> Breakfast</span>
             </label>
             <label class="flex center">
-              <input type="radio" name="type1" value="desert" />
+              <input type="checkbox" name="type" value="desert" />
               <span> Desert</span>
             </label>
             <label class="flex center">
-              <input type="radio" name="type1" value="garrison" />
+              <input type="checkbox" name="type" value="garrison" />
               <span> Garrison</span>
             </label>
           </div>
