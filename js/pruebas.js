@@ -32,30 +32,32 @@ radioNonVeg.addEventListener('change', () => {
 
 // Selec country-------------------------------------------------------------------------------------
 
-// const countries = meals.map(country => country.strArea)
+const countries = finalArrey.map(country => country.strArea)
 
-// const menuCountry = document.getElementById("selectCountry");
+const menuCountry = document.getElementById("selectCountry");
 
-// countries.forEach(country => {
-//   const opcion = document.createElement("option");
-//   opcion.value = country; // valor para usar en JS
-//   opcion.textContent = `${country}`; // texto visible
-//   selectCountry.appendChild(opcion); // agregar al menú
-// });
+countries.forEach(country => {
+  const opcion = document.createElement("option");
+  opcion.value = country; 
+  opcion.textContent = `${country}`; 
+  selectCountry.appendChild(opcion); 
+});
 
+let arrayCountryAndVeg = [];
 
-// selectCountry.addEventListener("change", (e) => {
-//   const paisSeleccionado = e.target.value;
+selectCountry.addEventListener("change", (e) => {
+  const paisSeleccionado = e.target.value;
 
-//   if (paisSeleccionado) {
+  if (paisSeleccionado) {
 
-//     const arrayCountrySelected = finalArrey.filter(cat3 => cat3.strArea == paisSeleccionado);
-//     console.log ("arrayCountrySelected", arrayCountrySelected);
+    const arrayCountrySelected = finalArrey.filter(cat3 => cat3.strArea == paisSeleccionado);
+    console.log ("arrayCountrySelected PRPR", arrayCountrySelected);
+    arrayCountryAndVeg = arrayCountrySelected ;
 
-//   } else {
-//     console.log("No se seleccionó ningún país");
-//   }
-// });
+  } else {
+    console.log("No se seleccionó ningún país");
+  }
+});
 
 
 
@@ -68,10 +70,11 @@ buttonSearch.addEventListener ("click", loadAllRecipes)
 // Functions----------------------------------------------------------------------------------
 function loadAllRecipes () {
 
-  meals = finalArrey;
+  meals = arrayCountryAndVeg;
 
   console.log ("Final Arrey!!!", finalArrey);
   console.log ("Meals!!!", meals);
+  console.log ("arrayCountryAndVeg!!!", arrayCountryAndVeg);
 
   contenedorRecipe.innerHTML = ""
 
