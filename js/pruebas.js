@@ -1,50 +1,15 @@
 
-// Ejemplo .filter con condicional --------------------------------------------------------------
-// meals.filter((mealPr, i, arrey) => {
-//   console.log ("meals pr!", meals);
-//   console.log ("arrey pr!", arrey);
-//   console.log ("meal pr!", mealPr);
-//   console.log ("i pr!", i);
-//   // retorna true para mantener el elemento en el nuevo array
-// });
-
-// Ejemplo .filter 2--------------------------------------------------------------
-// const productos = [
-//   { nombre: "Pizza", disponible: true },
-//   { nombre: "Hamburguesa", disponible: false },
-//   { nombre: "Ensalada", disponible: true }
-// ];
-// const disponibles = productos.filter(producto => producto.disponible);
-// console.log("Disponibles", disponibles);
 
 
-let finalArrey  ;
-
-// let vegRecipe = [];
-// let omnRecipe = [];
-
-
-// Example make an .filter with an foreach
-// meals.forEach(cat => {
-//   if (cat.strCategory === "Vegetarian") {
-//     vegRecipe = [...vegRecipe, cat]; // Se crea un nuevo array en cada iteración
-//     finalArrey.push(cat);
-//   }
-// });
-
-
+let finalArrey = meals;
 
 const vegRecipe = meals.filter(cat => cat.strCategory == "Vegetarian");
 console.log ("vegRecipe pr!", vegRecipe);
 const omnRecipe = meals.filter(cat => cat.strCategory !== "Vegetarian");
 
-
 // Radios-------------------------------------------------------------------------------------
 const radioVeg = document.getElementById('radioVegetarian');
 const radioNonVeg = document.getElementById('radioOmnivore');
-
-
-
 
 radioVeg.addEventListener('change', () => {
   if (radioVeg.checked) {
@@ -53,11 +18,8 @@ radioVeg.addEventListener('change', () => {
     finalArrey = [...vegRecipe];
     console.log("Vegetariano seleccionado:", meals);
     console.log ("Final arrey Veg Result!!", finalArrey);
-
   }
 });
-
-//  Detectar cambios cuando se selecciona "No Vegetariano"
 radioNonVeg.addEventListener('change', () => {
   if (radioNonVeg.checked) {
     
@@ -65,40 +27,45 @@ radioNonVeg.addEventListener('change', () => {
     finalArrey = [...omnRecipe];
     console.log("No vegetariano seleccionado:", meals);
     console.log ("Final arrey no veg Result!!", finalArrey);
-
   }
 });
 
+// Selec country-------------------------------------------------------------------------------------
+
+// const countries = meals.map(country => country.strArea)
+
+// const menuCountry = document.getElementById("selectCountry");
+
+// countries.forEach(country => {
+//   const opcion = document.createElement("option");
+//   opcion.value = country; // valor para usar en JS
+//   opcion.textContent = `${country}`; // texto visible
+//   selectCountry.appendChild(opcion); // agregar al menú
+// });
+
+
+// selectCountry.addEventListener("change", (e) => {
+//   const paisSeleccionado = e.target.value;
+
+//   if (paisSeleccionado) {
+
+//     const arrayCountrySelected = finalArrey.filter(cat3 => cat3.strArea == paisSeleccionado);
+//     console.log ("arrayCountrySelected", arrayCountrySelected);
+
+//   } else {
+//     console.log("No se seleccionó ningún país");
+//   }
+// });
 
 
 
 
-
-      // const countries = [
-      //   { name: 'Bolivia', landlocked: true },
-      //   { name: 'Chile', landlocked: false },
-      //   { name: 'Paraguay', landlocked: true },
-      //   { name: 'Perú', landlocked: false },
-      // ];
-      // let isLandlocked = true; // Supongamos que el usuario marcó "mostrar sin salida al mar"
-      // let landlockedCountries = [];
-      // countries.forEach(country => {
-      //   if (country.landlocked === isLandlocked) {
-      //     landlockedCountries = [...landlockedCountries, country];
-      //   }
-      // });
-      // console.log(landlockedCountries);
-      // // Salida: [{ name: 'Bolivia', landlocked: true }, { name: 'Paraguay', landlocked: true }]
-
-
-
-
-
-
-
+// Button-------------------------------------------------------------------------------------
 const buttonSearch  = document.getElementById("buttonSearchRecipe")
 buttonSearch.addEventListener ("click", loadAllRecipes)
 
+
+// Functions----------------------------------------------------------------------------------
 function loadAllRecipes () {
 
   meals = finalArrey;
@@ -195,30 +162,79 @@ containerIngredients.appendChild(tri)
 } // end recipes loop
 }
 
-    // // 1. Crear el elemento <h1>
-    // const titulo = document.createElement("h1");
-
-    // // 2. Añadir texto al <h1>
-    // titulo.textContent = meals[1].strMeal;
-
-    // // 3. Insertarlo en el contenedor con id="contenedor"
-    // document.getElementById("contenedor1").appendChild(titulo);
 
 
-    // Insertar texto en un contenedor
-    // document.getElementById("javaH1").textContent = meals[1].strMeal;
 
 
-        // // 1. Crear el elemento <img>
-        // const imagen = document.createElement("img");
+// Ejemplo .filter con condicional -------------------------------------------------------
+// meals.filter((mealPr, i, arrey) => {
+//   console.log ("meals pr!", meals);
+//   console.log ("arrey pr!", arrey);
+//   console.log ("meal pr!", mealPr);
+//   console.log ("i pr!", i);
+//   // retorna true para mantener el elemento en el nuevo array
+// });
 
-        // // 2. Asignar la fuente de la imagen
-        // imagen.src = "https://www.themealdb.com/images/media/meals/tkxquw1628771028.jpg"; // Imagen de prueba
+// Ejemplo .filter 2---------------------------------------------------------------------
+// const productos = [
+//   { nombre: "Pizza", disponible: true },
+//   { nombre: "Hamburguesa", disponible: false },
+//   { nombre: "Ensalada", disponible: true }
+// ];
+// const disponibles = productos.filter(producto => producto.disponible);
+// console.log("Disponibles", disponibles);
+
+
+
+// Example create array and filter with foreach ----------------------------------------------
+// let vegRecipe = [];
+// meals.forEach(cat => {
+//   if (cat.strCategory === "Vegetarian") {
+//     vegRecipe = [...vegRecipe, cat]; // Se crea un nuevo array en cada iteración
+//   }
+// });
+
+
+// Example make an array with strend ----------------------------------------------------
+// const countries = [
+//   { name: 'Bolivia', landlocked: true },
+//   { name: 'Chile', landlocked: false },
+//   { name: 'Paraguay', landlocked: true },
+//   { name: 'Perú', landlocked: false },
+// ];
+// let isLandlocked = true; // Supongamos que el usuario marcó "mostrar sin salida al mar"
+// let landlockedCountries = [];
+// countries.forEach(country => {
+//   if (country.landlocked === isLandlocked) {
+//     landlockedCountries = [...landlockedCountries, country];
+//   }
+// });
+// console.log(landlockedCountries);
+// // Salida: [{ name: 'Bolivia', landlocked: true }, { name: 'Paraguay', landlocked: true }]
+
+// Example cosntruction content --------------------------------------------------------------
+
+// // 1. Crear el elemento <h1>
+// const titulo = document.createElement("h1");
+// // 2. Añadir texto al <h1>
+// titulo.textContent = meals[1].strMeal;
+// // 3. Insertarlo en el contenedor con id="contenedor"
+// document.getElementById("contenedor1").appendChild(titulo);
+// Insertar texto en un contenedor
+// document.getElementById("javaH1").textContent = meals[1].strMeal;
     
-        // // 3. Añadir atributos adicionales
-        // imagen.alt = "Imagen de ejemplo";
-        // imagen.width = 300; // Ancho de 300px
-    
-        // // 4. Insertar la imagen en el div con id="contenedor"
-        // document.getElementById("contenedorRecipe").appendChild(imagen);
+// Example cosntruction img --------------------------------------------------------------  
+
+// // 1. Crear el elemento <img>
+// const imagen = document.createElement("img");
+
+// // 2. Asignar la fuente de la imagen
+// imagen.src = "https://www.themealdb.com/images/media/meals/tkxquw1628771028.jpg"; // Imagen de prueba
+
+// // 3. Añadir atributos adicionales
+// imagen.alt = "Imagen de ejemplo";
+// imagen.width = 300; // Ancho de 300px
+
+// // 4. Insertar la imagen en el div con id="contenedor"
+// document.getElementById("contenedorRecipe").appendChild(imagen);
 
