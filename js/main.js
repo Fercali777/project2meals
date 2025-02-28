@@ -58,6 +58,7 @@ selectCountry.addEventListener("change", (e) => {
 
 // Select Type--------------------------------------------------------------------------------
 let typeSelected = [];
+console.log ("seleccionados type!!!", typeSelected);
 
 document.getElementById("getSelection").addEventListener("click", function() {
       const selected = [...document.querySelectorAll('input[name="type"]:checked')]
@@ -67,18 +68,17 @@ document.getElementById("getSelection").addEventListener("click", function() {
       findSelected ();
 
 });
-console.log ("seleccionados type!", typeSelected)
+
 // let types = meals.strTags();
 // console.log ("types!!!", types);
 
 
 function findSelected (){
-  const findedTypes = meals.filter(meal => typeSelected.some(type => meal.strTags.includes(type)));
+const findedTypes = meals.filter(meal => typeSelected.some(type => meal.strTags.includes(type)));
   
 if (findedTypes.length > 0) {
-  console.log("findSelected"findSelected);
-} 
-
+  console.log("findedTypes!!");
+}
 else {
     console.log("not types finded");
 }
@@ -86,7 +86,14 @@ else {
 
 
 
-
+function findSelected (){
+  const findedTypes = meals.filter(meal => typeSelected.includes(meal.strCategory));
+  if (findedTypes.length > 0) {
+      console.log("types finded:!!!!!", findedTypes);
+  } else {
+      console.log("not types finded");
+  }
+  }
 
 
 
