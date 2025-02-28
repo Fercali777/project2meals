@@ -1,41 +1,194 @@
+let finalArrey = meals;
+let indexCompilation = [];
+
+
+const vegRecipe = meals.filter(cat => cat.strCategory == "Vegetarian");
+  console.log ("vegRecipe", vegRecipe);
+const omnRecipe = meals.filter(cat => cat.strCategory !== "Vegetarian");
+
+
+// Radios-------------------------------------------------------------------------------------
+const radioVeg = document.getElementById('radioVegetarian');
+const radioNonVeg = document.getElementById('radioOmnivore');
+
+function handleRadioChange(selectedRecipe) {
+  finalArrey = [...selectedRecipe]; // Clona el array seleccionado
+  console.log("Final array result:", finalArrey);
+}
+radioVeg.addEventListener('change', () => {
+  if (radioVeg.checked) handleRadioChange(vegRecipe);
+});
+radioNonVeg.addEventListener('change', () => {
+  if (radioNonVeg.checked) handleRadioChange(omnRecipe);
+});
+
+
+// Selec country-------------------------------------------------------------------------------------
+
+const countries = finalArrey.map(country => country.strArea)
+const menuCountry = document.getElementById("selectCountry");
+const setAndSortCountries = [...new Set(countries)].sort();
+setAndSortCountries.forEach(country => {
+  const opcion = document.createElement("option");
+  opcion.value = country; 
+  opcion.textContent = `${country}`; 
+  selectCountry.appendChild(opcion); 
+});
+
+let arrayCountryAndVeg = [];
+
+selectCountry.addEventListener("change", (e) => {
+  const selectedCountry = e.target.value;
+
+  if (selectedCountry) {
+
+    const arrayCountrySelected = finalArrey.filter(cat3 => cat3.strArea == selectedCountry);
+    console.log ("arrayCountrySelected PRPR", arrayCountrySelected);
+    arrayCountryAndVeg = arrayCountrySelected ;
+
+  } else {
+    console.log("No se seleccionó ningún país");
+  }
+});
 
 
 
-// const meal = meals[0]; // Tomamos el primer (y único) objeto de meals
-// const ingredients = [];
-
-// for (let i = 1; i <= 20; i++) {
-//   const ingredient = meal[`strIngredient${i}`]; 
-//   if (ingredient && ingredient.trim() !== "") { 
-//     ingredients.push(ingredient);
-//   }
-// }
-// console.log(ingredients);
 
 
 
-// for (let i = 0 ; i < numberUping ; i++){
-//   if (meals[1].strIngredient(i) == ("")){
-//     console.log (Lopping!!);
+// Select Type--------------------------------------------------------------------------------
+let typeSelected = [];
 
-//   }
+document.getElementById("getSelection").addEventListener("click", function() {
+      const selected = [...document.querySelectorAll('input[name="type"]:checked')]
+      .map(checkbox => checkbox.value);
+      typeSelected = selected;// Muestra en consola el array con los valores seleccionados
+      console.log ("typeSelected", typeSelected);
+      findSelected ();
 
-// }
+});
+console.log ("seleccionados type!", typeSelected)
+// let types = meals.strTags();
+// console.log ("types!!!", types);
+
+
+function findSelected (){
+  const findedTypes = meals.filter(meal => typeSelected.some(type => meal.strTags.includes(type)));
+  
+if (findedTypes.length > 0) {
+  console.log("findSelected"findSelected);
+} 
+
+else {
+    console.log("not types finded");
+}
+}
 
 
 
-// Ingredients table
+
+
+
+
+
+const typeRecipe = meals.filter(cat => cat.strCategory == "Vegetarian");
+
+
+
+
+// Button-------------------------------------------------------------------------------------
+const buttonSearch  = document.getElementById("buttonSearchRecipe")
+buttonSearch.addEventListener ("click", loadAllRecipes)
+
+
+
+// Show final array by index------------------------------------------------------------------
+
+
+
+
+// Functions----------------------------------------------------------------------------------
+function loadAllRecipes () {
+
+  meals = arrayCountryAndVeg;
+
+  console.log ("Final Arrey!!!", finalArrey);
+  console.log ("Meals!!!", meals);
+  console.log ("arrayCountryAndVeg!!!", arrayCountryAndVeg);
+
+  contenedorRecipe.innerHTML = ""
+
+for (let i = 0 ; i < meals.length ; i++){
+    const tituloRecipe = document.createElement("h1");
+    const containerRecipe = document.createElement("div");
+    const containerCol = document.createElement("div");
+    const imgRecipe = document.createElement("img");
+    const containerCol2 = document.createElement("div");
+    const textType = document.createElement("h4");
+    const textTypeCont = document.createElement("h5");
+    const textIngredients = document.createElement("h4");
+    const containerIngredients = document.createElement("div");
+    const titlePreparation = document.createElement("h4");
+    const textPreparation = document.createElement("p");
+    
+    tituloRecipe.textContent = meals[i].strMeal;
+    containerRecipe.id = "recipe-container";
+    containerRecipe.className = "row";
+    containerCol.className = "col-3";
+    imgRecipe.src = meals[i].strMealThumb;
+    containerCol2.className = "col recipe-text";
+    containerCol2.id = "recipe-text";
+    textType.textContent = "Type";
+    textTypeCont.textContent = meals[i].strCategory + ", " + meals[i].strArea ;
+    textIngredients.textContent = "Ingredients";
+    containerIngredients.id = "containerIngredients";
+    titlePreparation.textContent = "Preparation";
+    textPreparation.textContent = meals[i].strInstructions; 
+    // containerRecipe.textContent = "Here the text";
+    
+    document.getElementById("contenedorRecipe").appendChild(tituloRecipe);
+    document.getElementById("contenedorRecipe").appendChild(containerRecipe);
+    document.getElementById("recipe-container").appendChild(containerCol);
+    document.getElementById("recipe-container").appendChild(imgRecipe);
+    document.getElementById("recipe-container").appendChild(containerCol2);
+    document.getElementById("recipe-text").appendChild(textType);
+    document.getElementById("recipe-text").appendChild(textTypeCont);
+    document.getElementById("recipe-text").appendChild(textIngredients);
+    document.getElementById("recipe-text").appendChild(containerIngredients);
+    document.getElementById("recipe-text").appendChild(titlePreparation);
+    document.getElementById("recipe-text").appendChild(textPreparation);
+   
+    containerRecipe.appendChild(containerCol);
+    containerRecipe.appendChild(containerCol2);
+    containerCol.appendChild(imgRecipe);
+    // containerCol2.appendChild(textType);
+
+// Ingredients table -----------------------------------------------------------------------
 const meal = meals[0]; 
-const ingredients = [];
+const ingredients = [0];
 const measures = [];
 
-for (let i = 1; i <= 20; i++) {
+for (let i = 1 ; i <= ingredients.length ; i++) {
   const ingredient = meal[`strIngredient${i}`]; 
   const measure = meal[`strMeasure${i}`]; 
+
   if (ingredient && ingredient !== "") { 
     ingredients.push(ingredient);
     measures.push(measure)
-  }
+  }  
+// console.log ("Ingredients.length", ingredients.length);  
+
+if (i == 1){
+const triT =  document.createElement("tr")
+const thi1 = document.createElement("th")
+const thi2 = document.createElement("th")
+  thi1.textContent = "Ingredient";
+  thi2.textContent = "Measure";
+  triT.appendChild(thi1)
+  triT.appendChild(thi2)
+  
+  containerIngredients.appendChild(triT)
+}
 
 const tri = document.createElement("tr")
 const tdi1 = document.createElement("td")
@@ -43,90 +196,37 @@ const tdi2 = document.createElement("td")
 
 tdi1.innerHTML = ingredient
 tdi2.innerHTML = measure
+
 tri.appendChild(tdi1)
 tri.appendChild(tdi2)
-tbody.appendChild(tri)
+
+containerIngredients.appendChild(tri)
+} // end ingredients table loop
+} // end recipes loop
 }
-console.log(ingredients);
-console.log(measures);
-// Ingredients table
+
+// find index! -------------------------------------------------------------------------------
+
+const indicesVeg = [];
+meals.forEach((recepi, indice) => {
+  if (recepi.strCategory === "Vegetarian") {
+    indicesVeg.push(indice); // Guarda el índice si es par
+  }
+});
+console.log("!!!!indices veg NEW:", indicesVeg);
 
 
 
 
+///////////////////////////////////// Tools finded /////////////////////////////////////////////
 
 
-
-
-
-// table from spike
-// const tbody = document.getElementById("tbody");
-// for (let i = 0; i < meals.length; i++) {
-
-
-//   const tr = document.createElement("tr")
-//   const td1 = document.createElement("td")
-//   const td2 = document.createElement("td")
-//   const td3 = document.createElement("td")
-//   const td4 = document.createElement("td")
-//   const td5 = document.createElement("td")
-//   const td6 = document.createElement("td")
-//   const td7 = document.createElement("td")
-
-
-//   td1.innerHTML = meals[i].idMeal
-//   td2.innerHTML = meals[i].strMeal
-//   td3.innerHTML = meals[i].strCategory
-//   td4.innerHTML = meals[i].strArea
-//   td5.innerHTML = meals[i].strTags
-//   td6.innerHTML = meals[i].strIngredient1
-//   td7.innerHTML = meals[i].strInstructions
-
-
- 
-
-//   tr.appendChild(td1)
-//   tr.appendChild(td2)
-//   tr.appendChild(td3)
-//   tr.appendChild(td4)
-//   tr.appendChild(td5)
-//   tr.appendChild(td6)
-//   tr.appendChild(td7)
-
-//   tbody.appendChild(tr)
-// }
-
-
-
-
-// Call only one row -------------------------------------------------
-//   const tbody = document.getElementById("tbody") 
-
-//   const tr = document.createElement("tr")
-//   const td1 = document.createElement("td")
-//   const td2 = document.createElement("td")
-//   const td3 = document.createElement("td")
-//   const td4 = document.createElement("td")
-//   const td5 = document.createElement("td")
-//   const td6 = document.createElement("td")
-//   const td7 = document.createElement("td")
-
-  
-//   td1.innerHTML = meals[1].idMeal
-//   td2.innerHTML = meals[1].strMeal
-//   td3.innerHTML = meals[1].strCategory
-//   td4.innerHTML = meals[1].strArea
-//   td5.innerHTML = meals[1].strTags
-//   td6.innerHTML = meals[1].strIngredient1
-//   td7.innerHTML = meals[1].strInstructions
-
-  
-//   tr.appendChild(td1)
-//   tr.appendChild(td2)
-//   tr.appendChild(td3)
-//   tr.appendChild(td4)
-//   tr.appendChild(td5)
-//   tr.appendChild(td6)
-//   tr.appendChild(td7)
-
-//   tbody.appendChild(tr)
+// encontrar exactamente un elemento en comun dentro de dos array--------------------------------
+// function findSelected (){
+//   const findedTypes = meals.filter(meal => typeSelected.includes(meal.strCategory));
+//   if (findedTypes.length > 0) {
+//       console.log("types finded:!!!!!", findedTypes);
+//   } else {
+//       console.log("not types finded");
+//   }
+//   }

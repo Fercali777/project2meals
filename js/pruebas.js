@@ -1,6 +1,3 @@
-
-
-
 let finalArrey = meals;
 
 const vegRecipe = meals.filter(cat => cat.strCategory == "Vegetarian");
@@ -11,32 +8,25 @@ const omnRecipe = meals.filter(cat => cat.strCategory !== "Vegetarian");
 const radioVeg = document.getElementById('radioVegetarian');
 const radioNonVeg = document.getElementById('radioOmnivore');
 
+function handleRadioChange(selectedRecipe) {
+  finalArrey = [...selectedRecipe]; // Clona el array seleccionado
+  console.log("Final array result:", finalArrey);
+}
+// Asignar la misma función a ambos radios
 radioVeg.addEventListener('change', () => {
-  if (radioVeg.checked) {
-    
-    finalArrey = [];
-    finalArrey = [...vegRecipe];
-    console.log("Vegetariano seleccionado:", meals);
-    console.log ("Final arrey Veg Result!!", finalArrey);
-  }
+  if (radioVeg.checked) handleRadioChange(vegRecipe);
 });
 radioNonVeg.addEventListener('change', () => {
-  if (radioNonVeg.checked) {
-    
-    finalArrey = [];
-    finalArrey = [...omnRecipe];
-    console.log("No vegetariano seleccionado:", meals);
-    console.log ("Final arrey no veg Result!!", finalArrey);
-  }
+  if (radioNonVeg.checked) handleRadioChange(omnRecipe);
 });
+
 
 // Selec country-------------------------------------------------------------------------------------
 
 const countries = finalArrey.map(country => country.strArea)
-
 const menuCountry = document.getElementById("selectCountry");
-
-countries.forEach(country => {
+const setAndSortCountries = [...new Set(countries)].sort();
+setAndSortCountries.forEach(country => {
   const opcion = document.createElement("option");
   opcion.value = country; 
   opcion.textContent = `${country}`; 
@@ -46,11 +36,11 @@ countries.forEach(country => {
 let arrayCountryAndVeg = [];
 
 selectCountry.addEventListener("change", (e) => {
-  const paisSeleccionado = e.target.value;
+  const selectedCountry = e.target.value;
 
-  if (paisSeleccionado) {
+  if (selectedCountry) {
 
-    const arrayCountrySelected = finalArrey.filter(cat3 => cat3.strArea == paisSeleccionado);
+    const arrayCountrySelected = finalArrey.filter(cat3 => cat3.strArea == selectedCountry);
     console.log ("arrayCountrySelected PRPR", arrayCountrySelected);
     arrayCountryAndVeg = arrayCountrySelected ;
 
@@ -61,10 +51,14 @@ selectCountry.addEventListener("change", (e) => {
 
 
 
-
 // Button-------------------------------------------------------------------------------------
 const buttonSearch  = document.getElementById("buttonSearchRecipe")
 buttonSearch.addEventListener ("click", loadAllRecipes)
+
+
+// Show final array by index------------------------------------------------------------------
+
+
 
 
 // Functions----------------------------------------------------------------------------------
@@ -165,7 +159,42 @@ containerIngredients.appendChild(tri)
 } // end recipes loop
 }
 
+// Propose 2! -------------------------------------------------------------------------------
 
+
+
+const indicesVeg = [];
+meals.forEach((recepi, indice) => {
+  if (recepi.strCategory === "Vegetarian") {
+    indicesVeg.push(indice); // Guarda el índice si es par
+  }
+});
+console.log("indices veg NEW:", indicesVeg);
+
+
+
+
+// radioVeg.addEventListener('change', () => {
+//   if (radioVeg.checked) {
+//     finalArrey = [];
+//     finalArrey = [...vegRecipe];
+//     console.log("Vegetariano seleccionado:", meals);
+//     console.log ("Final arrey Veg Result!!", finalArrey);
+//   }
+// });
+
+
+
+// Ejemplo .filter --------------------------------------------------------------------------------
+
+// const seeVegFiltered =  meals.filter((Category, i, arrey) => {
+//   // console.log ("meals pr!", meals);
+//   // console.log ("arrey pr!", arrey);
+//   // console.log ("meal pr!", Category);
+//   // console.log ("i pr!", i);
+//   return meals.strCategory === "Vegetarian";
+// });
+// console.log ("seeVegFiltered", seeVegFiltered);
 
 
 
