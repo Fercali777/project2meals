@@ -1,5 +1,5 @@
-let finalArrey = meals;
-let indexCompilation = [];
+let idsGloval = [];
+
 
 const vegRecipe = meals.filter((cat) => cat.strCategory == "Vegetarian");
 console.log("vegRecipe", vegRecipe);
@@ -10,31 +10,15 @@ const omnRecipe = meals.filter((cat) => cat.strCategory !== "Vegetarian");
 const radioVeg = document.getElementById("radioVegetarian");
 const radioNonVeg = document.getElementById("radioOmnivore");
 
+
+
 let idVeg = []; // IDs>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 let idOmn = []; // IDs>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 const checkbox = document.querySelector("radioVeg");
-function runCheckVegetarian() {
-  if (radioVeg.checked) {
-    meals.forEach((recepi, indice) => {
-      if (recepi.strCategory === "Vegetarian") {
-        idVeg.push(recepi.idMeal);
-      }
-    });
-    console.log("recepi.idMeal NEW!!!", idVeg);
-  }
-  if (radioNonVeg.checked) {
-    meals.forEach((recepi, indice) => {
-      if (recepi.strCategory !== "Vegetarian") {
-        idOmn.push(recepi.idMeal);
-      }
-    });
-    console.log("recepi.idMeal NEW!!!", idOmn);
-  }
-}
 
-// Selec country-------------------------------------------------------------------------------------
 
+// generate and draw Countries menu -------------------------------------
 const countries = meals.map((country) => country.strArea);
 const menuCountry = document.getElementById("selectCountry");
 const setAndSortCountries = [...new Set(countries)].sort();
@@ -46,29 +30,65 @@ setAndSortCountries.forEach((country) => {
   selectCountry.appendChild(opcion);
 });
 
+
+
+
+
+function runCheck() {
+  if (radioVeg.checked) {
+    meals.forEach((recepi, indice) => {
+      if (recepi.strCategory === "Vegetarian") {
+        idsGloval.push(recepi.idMeal);// IDs pusch>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+      }
+      else {
+        console.log("No Veg recipes found");
+      }
+    });
+    console.log("recepi.idMeal NEW!!!", idsGloval);
+  }
+  if (radioNonVeg.checked) {
+    meals.forEach((recepi, indice) => {
+      if (recepi.strCategory !== "Vegetarian") {
+        idsGloval.push(recepi.idMeal);// IDs pusch>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+      }
+      else {
+        console.log("No Omn recipes found");
+      }
+    });
+    console.log("recepi.idMeal NEW!!!", idsGloval);
+  }
+
+
+// Selec country-------------------------------------------------------------------------------------
+
+
+
 const idCountry = []; // IDs>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 const select = document.querySelector("#selectCountry");
-function runCheckCountry() {
+// function runCheckCountry() {
    meals.forEach((recepi, indice) => {
     if (recepi.strArea === select.value) {
-      idCountry.push(recepi.idMeal);
+      idsGloval.push(recepi.idMeal);
       console.log ("ID Country New!!", idCountry)
     }
+    else {
+      console.log("No countries found");
+    }
   });
-};
+// };
 
 
 
 // Select Type--------------------------------------------------------------------------------
 let typeSelected = [];
 
-const idType = []; // INDEX>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+const idType = []; // IDs>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 console.log("seleccionados type!!!", typeSelected);
 
 
-function runCheckType (){
+// function runCheckType (){
 
 
       const selected = [
@@ -89,15 +109,17 @@ function runCheckType (){
 
       if (foundTypes.length > 0) {
         foundTypes.forEach((recepi, indice) => {
-          idType.push(recepi.idMeal); 
+          idsGloval.push(recepi.idMeal); 
           
         });
       } else {
         console.log("No types found");
       }
-      console.log("idType!!!!", idType);
+      console.log("idGoval!!!!", idsGloval);
 
-}
+// }
+
+ } //end function runSerch
 
 // document.querySelectorAll(".checkBoxType").forEach((checkbox) => {
 //   checkbox.addEventListener("change", (event) => {
@@ -139,13 +161,13 @@ const buttonSearch = document.getElementById("buttonSearchRecipe");
 buttonSearch.addEventListener("click", loadAllRecipes);
 
 const buttonSearch2 = document.getElementById("buttonSearchRecipe2");
-buttonSearch2.addEventListener("click", runCheckType);
+buttonSearch2.addEventListener("click", runCheck);
 
 // Show final array by index------------------------------------------------------------------
 
 // Functions----------------------------------------------------------------------------------
 function loadAllRecipes() {
-  meals = arrayCountryAndVeg;
+  
 
   console.log("Final Arrey!!!", finalArrey);
   console.log("Meals!!!", meals);
