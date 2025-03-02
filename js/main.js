@@ -13,13 +13,33 @@ const radioNonVeg = document.getElementById('radioOmnivore');
 
 function handleRadioChange(selectedRecipe) {
   finalArrey = [...selectedRecipe]; // Clona el array seleccionado
-  console.log("Final array result:", finalArrey);
+  // console.log("Final array result:", finalArrey);
 }
 radioVeg.addEventListener('change', () => {
   if (radioVeg.checked) handleRadioChange(vegRecipe);
+  console.log ("idVeg", idVeg);
 });
 radioNonVeg.addEventListener('change', () => {
   if (radioNonVeg.checked) handleRadioChange(omnRecipe);
+  console.log ("idOmn", idOmn);
+});
+
+
+
+const idVeg = [];// INDEX>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+const idOmn = [];// INDEX>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+meals.forEach((recepi, indice) => {
+  if (recepi.strCategory === "Vegetarian") {
+    idVeg.push(recepi.idMeal); 
+
+  }
+});
+meals.forEach((recepi, indice) => {
+  if (recepi.strCategory !== "Vegetarian") {
+    idOmn.push(recepi.idMeal); 
+    
+  }
 });
 
 
@@ -37,6 +57,8 @@ setAndSortCountries.forEach(country => {
 
 let arrayCountryAndVeg = [];
 
+const idCountry = [];// INDEX>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
 selectCountry.addEventListener("change", (e) => {
   const selectedCountry = e.target.value;
 
@@ -45,6 +67,11 @@ selectCountry.addEventListener("change", (e) => {
     const arrayCountrySelected = finalArrey.filter(cat3 => cat3.strArea == selectedCountry);
     console.log ("arrayCountrySelected PRPR", arrayCountrySelected);
     arrayCountryAndVeg = arrayCountrySelected ;
+
+    arrayCountrySelected.forEach((recepi, indice) => {
+       idCountry.push(recepi.idMeal); // Guarda el índice si es par
+       console.log ("idCountry!!!!", idCountry);
+    });
 
   } else {
     console.log("No se seleccionó ningún país");
@@ -56,8 +83,14 @@ selectCountry.addEventListener("change", (e) => {
 
 
 
+
+
+
 // Select Type--------------------------------------------------------------------------------
 let typeSelected = [];
+
+const idType = [];// INDEX>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
 console.log ("seleccionados type!!!", typeSelected);
 
 document.getElementById("getSelection").addEventListener("click", function() {
@@ -69,36 +102,37 @@ document.getElementById("getSelection").addEventListener("click", function() {
 
 });
 
-// let types = meals.strTags();
-// console.log ("types!!!", types);
 
 
-function findSelected (){
-const findedTypes = meals.filter(meal => typeSelected.some(type => meal.strTags.includes(type)));
-  
-if (findedTypes.length > 0) {
-  console.log("findedTypes!!");
-}
-else {
-    console.log("not types finded");
-}
-}
+function findSelected() {
+  const foundTypes = meals.filter(meal =>
+    typeSelected.some(type => 
+      (meal.strCategory.toLowerCase().includes(type.toLowerCase()) ||
+      (meal.strTags && meal.strTags.toLowerCase().includes(type.toLowerCase())) ||
+      meal.strMeal.toLowerCase().includes(type.toLowerCase()))
+    )
+  );
+
+  if (foundTypes.length > 0) {
+    console.log("Types found!!!", foundTypes);
+
+    foundTypes.forEach((recepi, indice) => {
+      idType.push(recepi.idMeal); // Guarda el índice si es par
+      console.log ("idType!!!!", idType);
+   });
 
 
-
-function findSelected (){
-  const findedTypes = meals.filter(meal => typeSelected.includes(meal.strCategory));
-  if (findedTypes.length > 0) {
-      console.log("types finded:!!!!!", findedTypes);
   } else {
-      console.log("not types finded");
+    console.log("No types found");
   }
-  }
+}
 
 
 
 
-const typeRecipe = meals.filter(cat => cat.strCategory == "Vegetarian");
+
+
+// const typeRecipe = meals.filter(cat => cat.strCategory == "Vegetarian");
 
 
 
@@ -214,13 +248,13 @@ containerIngredients.appendChild(tri)
 
 // find index! -------------------------------------------------------------------------------
 
-const indicesVeg = [];
-meals.forEach((recepi, indice) => {
-  if (recepi.strCategory === "Vegetarian") {
-    indicesVeg.push(indice); // Guarda el índice si es par
-  }
-});
-console.log("!!!!indices veg NEW:", indicesVeg);
+// const indicesVeg = [];
+// meals.forEach((recepi, indice) => {
+//   if (recepi.strCategory === "Vegetarian") {
+//     indicesVeg.push(indice); // Guarda el índice si es par
+//   }
+// });
+// console.log("!!!!indices veg NEW:", indicesVeg);
 
 
 
