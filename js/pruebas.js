@@ -56,6 +56,7 @@ const buttonSearch  = document.getElementById("buttonSearchRecipe")
 buttonSearch.addEventListener ("click", loadAllRecipes)
 
 
+
 // Show final array by index------------------------------------------------------------------
 
 
@@ -270,3 +271,21 @@ console.log("indices veg NEW:", indicesVeg);
 // // 4. Insertar la imagen en el div con id="contenedor"
 // document.getElementById("contenedorRecipe").appendChild(imagen);
 
+// find index! -------------------------------------------------------------------------------
+
+// const indicesVeg = [];
+// meals.forEach((recepi, indice) => {
+//   if (recepi.strCategory === "Vegetarian") {
+//     indicesVeg.push(indice); // Guarda el índice si es par
+//   }
+// });
+// console.log("!!!!indices veg NEW:", indicesVeg);
+
+
+// Event listener ----------------------------------------------------------------------------------
+// document.getElementById("checkButton").addEventListener("click", () => {
+//   const selected = Array.from(
+//     document.querySelectorAll(".checkBoxType:checked")
+//   ).map((checkbox) => checkbox.value);
+//   console.log("Seleccionados:", selected);
+// });
