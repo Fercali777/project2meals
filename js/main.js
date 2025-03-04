@@ -1,9 +1,26 @@
+let meals = []; 
+
+fetch("https://www.themealdb.com/api/json/v1/1/search.php?s=")
+
+  .then(response => response.json())
+  .then(data => {
+    if (data.meals) {
+      meals = data.meals; 
+      console.log("Data Meals:", meals);
+    } else {
+      console.log("not find");
+    }
+  })
+  .catch(error => console.error("Error al obtener los datos:", error));
+
+
+// Variables ------------------------------------------------------------------------------
 
 const vegRecipe = meals.filter((cat) => cat.strCategory == "Vegetarian");
 const omnRecipe = meals.filter((cat) => cat.strCategory !== "Vegetarian");
 
 let idsGloval = meals;
-let idsAfterCountry = []; 
+let idsAfterCountry = [];
 let idsAfterType = [];
 
 // Radios-------------------------------------------------------------------------------------
@@ -26,13 +43,11 @@ setAndSortCountries.forEach((country) => {
 });
 
 function runCheck() {
-
-    idVeg = []; 
-    idOmn = []; 
-    idsGloval = [];
-    idsAfterCountry = []; 
-    idsAfterType = [];
-
+  idVeg = [];
+  idOmn = [];
+  idsGloval = [];
+  idsAfterCountry = [];
+  idsAfterType = [];
 
   if (radioVeg.checked) {
     meals.forEach((recepi, indice) => {
@@ -40,19 +55,17 @@ function runCheck() {
         idsGloval.push(recepi); // pusch>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
       }
     });
-    console.log ("Meals veg filtered", idsGloval);
+    console.log("Meals veg filtered", idsGloval);
   }
   if (radioNonVeg.checked) {
     meals.forEach((recepi, indice) => {
       if (recepi.strCategory !== "Vegetarian") {
         idsGloval.push(recepi); // pusch>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-      }
-      
-      else {
+      } else {
         console.log("No Omn recipes found");
       }
     });
-    console.log ("Meals NonVeg filtered!!!!!!!!!!!", idsGloval);
+    console.log("Meals NonVeg filtered!!!!!!!!!!!", idsGloval);
   }
 
   if (!radioVeg.checked && !radioNonVeg.checked) {
@@ -60,36 +73,33 @@ function runCheck() {
     console.log("recepi.idMeal NEW!!!!!", idsGloval);
   }
 
+  // Selec country-------------------------------------------------------------------------------------
 
-
-// Selec country-------------------------------------------------------------------------------------
-
-
-const select = document.querySelector("#selectCountry");
-// function runCheckCountry() {
-   idsGloval.forEach((recepi, indice) => {
+  const select = document.querySelector("#selectCountry");
+  // function runCheckCountry() {
+  idsGloval.forEach((recepi, indice) => {
     if (recepi.strArea === select.value) {
-      idsAfterCountry.push(recepi); 
+      idsAfterCountry.push(recepi);
     }
   });
-  if (select.value === "" || select.value === "Seleccione..." || select.value == null) {
+  if (
+    select.value === "" ||
+    select.value === "Seleccione..." ||
+    select.value == null
+  ) {
     console.log("No countries found", select.value);
     idsAfterCountry = idsGloval;
   }
 
-  console.log ("ID Country", idsAfterCountry)
+  console.log("ID Country", idsAfterCountry);
 
-// };
+  // };
 
+  // Select Type--------------------------------------------------------------------------------
 
+  const idType = []; // IDs>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-// Select Type--------------------------------------------------------------------------------
-
-
-const idType = []; // IDs>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-
-//  function runCheckType(){
+  //  function runCheckType(){
 
   const selected = [
     ...document.querySelectorAll('input[name="type"]:checked'),
@@ -103,49 +113,45 @@ const idType = []; // IDs>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
         meal.strCategory.toLowerCase().includes(type.toLowerCase()) ||
         (meal.strTags &&
           meal.strTags.toLowerCase().includes(type.toLowerCase())) ||
-          meal.strMeal.toLowerCase().includes(type.toLowerCase())
+        meal.strMeal.toLowerCase().includes(type.toLowerCase())
     )
   );
 
   if (foundTypes.length > 0) {
     foundTypes.forEach((recepi, indice) => {
-      idsAfterType.push(recepi); 
+      idsAfterType.push(recepi);
     });
   } else {
     console.log("No types found");
     idsAfterType = idsAfterCountry;
   }
   console.log("idsAfterType!!!!", idsAfterType);
-// }
+  // }
 
-loadAllRecipes () ;
-
-
- } //end function runSerch
-
-
-
-
+  loadAllRecipes();
+} //end function runSerch
 
 // Button-------------------------------------------------------------------------------------
 const buttonSearch = document.getElementById("buttonSearchRecipe");
-buttonSearch.addEventListener("click", runCheck); 
+buttonSearch.addEventListener("click", runCheck);
 // runCheck
 
-
-printNoResoultsFound
-
+printNoResoultsFound;
 
 // Show final array by index------------------------------------------------------------------
 
 // Functions----------------------------------------------------------------------------------
 function loadAllRecipes() {
-
-
-
   contenedorRecipe.innerHTML = "";
 
+  if (idsAfterType.length === 0) {
+    printNoResoultsFound();
+  }
+
   for (let i = 0; i < idsAfterType.length; i++) {
+    const button = document.createElement("button");
+    button.textContent = "Ver más";
+
     const tituloRecipe = document.createElement("h1");
     const containerRecipe = document.createElement("div");
     const containerCol = document.createElement("div");
@@ -166,12 +172,19 @@ function loadAllRecipes() {
     containerCol2.className = "col recipe-text";
     containerCol2.id = "recipe-text";
     textType.textContent = "Type";
-    textTypeCont.textContent = idsAfterType[i].strCategory + ", " + idsAfterType[i].strArea  + ", " + idsAfterType[i].strTags;
+    textTypeCont.textContent =
+      idsAfterType[i].strCategory + ", " +
+      idsAfterType[i].strArea +", " +
+      idsAfterType[i].strTags;
     textIngredients.textContent = "Ingredients";
     containerIngredients.id = "containerIngredients";
     titlePreparation.textContent = "Preparation";
     textPreparation.textContent = idsAfterType[i].strInstructions;
     // containerRecipe.textContent = "Here the text";
+
+    button.onclick = () => {
+      window.open(`recipe.html?id=${i}`, "_blank");
+    };
 
     document.getElementById("contenedorRecipe").appendChild(tituloRecipe);
     document.getElementById("contenedorRecipe").appendChild(containerRecipe);
@@ -188,6 +201,7 @@ function loadAllRecipes() {
     containerRecipe.appendChild(containerCol);
     containerRecipe.appendChild(containerCol2);
     containerCol.appendChild(imgRecipe);
+    containerCol2.appendChild(button);
     // containerCol2.appendChild(textType);
 
     // Ingredients table -----------------------------------------------------------------------
@@ -232,19 +246,17 @@ function loadAllRecipes() {
   } // end recipes loop
 }
 
-
 function printNoResoultsFound() {
+  contenedorRecipe.innerHTML = "";
 
-    contenedorRecipe.innerHTML = "";
+  const NoRecipesFound = document.createElement("h1");
+  const NoRecipesFoundParagraf = document.createElement("h3");
 
-    const NoRecipesFound = document.createElement("h1");
+  NoRecipesFound.textContent = "Zero bites found!";
+  NoRecipesFoundParagraf.textContent = "Try a tastier filter";
+  NoRecipesFoundParagraf.style.color = "white";
+  contenedorRecipe.appendChild(NoRecipesFound);
+  contenedorRecipe.appendChild(NoRecipesFoundParagraf);
 
-    NoRecipesFound.textContent = "No Recipes Found";
-    contenedorRecipe.appendChild(NoRecipesFound); 
-
-    console.log ("Im doing it");
-
+  console.log("No recipes :(");
 }
-
-
-
