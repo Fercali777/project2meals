@@ -1,17 +1,19 @@
-let meals = []; 
+let meals = [];
 
 fetch("https://www.themealdb.com/api/json/v1/1/search.php?s=")
-
-  .then(response => response.json())
-  .then(data => {
+  .then((response) => response.json())
+  .then((data) => {
     if (data.meals) {
-      meals = data.meals; 
+      meals = data.meals;
       console.log("Data Meals:", meals);
+      showContent(meals);
     } else {
-      console.log("not find");
+      console.log("No se encontraron recetas.");
     }
   })
-  .catch(error => console.error("Error al obtener los datos:", error));
+  .catch((error) => console.error("Error al obtener los datos:", error));
+
+function showContent(meals) {
 
 
 // Variables ------------------------------------------------------------------------------
@@ -260,3 +262,7 @@ function printNoResoultsFound() {
 
   console.log("No recipes :(");
 }
+
+
+
+} // end function showContent

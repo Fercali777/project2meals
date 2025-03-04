@@ -6,14 +6,14 @@ fetch("https://www.themealdb.com/api/json/v1/1/search.php?s=")
     if (data.meals) {
       meals = data.meals;
       console.log("Data Meals:", meals);
-      mostrarReceta(meals);
+      showContent(meals);
     } else {
       console.log("No se encontraron recetas.");
     }
   })
   .catch((error) => console.error("Error al obtener los datos:", error));
 let indice = [];
-function mostrarReceta(meals) {
+function showContent(meals) {
   const params = new URLSearchParams(window.location.search);
   const id = params.get("id"); // Obtenemos el índice desde la URL
   console.log("ID recibido:", id);
