@@ -1,22 +1,17 @@
-let idsGloval = [];
-
 
 const vegRecipe = meals.filter((cat) => cat.strCategory == "Vegetarian");
-console.log("vegRecipe", vegRecipe);
 const omnRecipe = meals.filter((cat) => cat.strCategory !== "Vegetarian");
+
+let idsGloval = meals;
+let idsAfterCountry = []; 
+let idsAfterType = [];
 
 // Radios-------------------------------------------------------------------------------------
 
 const radioVeg = document.getElementById("radioVegetarian");
 const radioNonVeg = document.getElementById("radioOmnivore");
 
-
-
-let idVeg = []; // IDs>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-let idOmn = []; // IDs>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
 const checkbox = document.querySelector("radioVeg");
-
 
 // generate and draw Countries menu -------------------------------------
 const countries = meals.map((country) => country.strArea);
@@ -30,152 +25,127 @@ setAndSortCountries.forEach((country) => {
   selectCountry.appendChild(opcion);
 });
 
-
-
-
-
 function runCheck() {
+
+    idVeg = []; 
+    idOmn = []; 
+    idsGloval = [];
+    idsAfterCountry = []; 
+    idsAfterType = [];
+
+
   if (radioVeg.checked) {
     meals.forEach((recepi, indice) => {
       if (recepi.strCategory === "Vegetarian") {
-        idsGloval.push(recepi.idMeal);// IDs pusch>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-      }
-      else {
-        console.log("No Veg recipes found");
+        idsGloval.push(recepi); // pusch>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
       }
     });
-    console.log("recepi.idMeal NEW!!!", idsGloval);
+    console.log ("Meals veg filtered", idsGloval);
   }
   if (radioNonVeg.checked) {
     meals.forEach((recepi, indice) => {
       if (recepi.strCategory !== "Vegetarian") {
-        idsGloval.push(recepi.idMeal);// IDs pusch>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+        idsGloval.push(recepi); // pusch>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
       }
+      
       else {
         console.log("No Omn recipes found");
       }
     });
-    console.log("recepi.idMeal NEW!!!", idsGloval);
+    console.log ("Meals NonVeg filtered!!!!!!!!!!!", idsGloval);
   }
+
+  if (!radioVeg.checked && !radioNonVeg.checked) {
+    idsGloval = meals;
+    console.log("recepi.idMeal NEW!!!!!", idsGloval);
+  }
+
 
 
 // Selec country-------------------------------------------------------------------------------------
 
 
-
-const idCountry = []; // IDs>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
 const select = document.querySelector("#selectCountry");
 // function runCheckCountry() {
-   meals.forEach((recepi, indice) => {
+   idsGloval.forEach((recepi, indice) => {
     if (recepi.strArea === select.value) {
-      idsGloval.push(recepi.idMeal);
-      console.log ("ID Country New!!", idCountry)
-    }
-    else {
-      console.log("No countries found");
+      idsAfterCountry.push(recepi); 
     }
   });
+  if (select.value === "" || select.value === "Seleccione..." || select.value == null) {
+    console.log("No countries found", select.value);
+    idsAfterCountry = idsGloval;
+  }
+
+  console.log ("ID Country", idsAfterCountry)
+
 // };
 
 
 
 // Select Type--------------------------------------------------------------------------------
-let typeSelected = [];
+
 
 const idType = []; // IDs>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-console.log("seleccionados type!!!", typeSelected);
 
+//  function runCheckType(){
 
-// function runCheckType (){
+  const selected = [
+    ...document.querySelectorAll('input[name="type"]:checked'),
+  ].map((checkbox) => checkbox.value);
+  typeSelected = selected;
+  console.log("typeSelected", typeSelected);
 
+  const foundTypes = idsAfterCountry.filter((meal) =>
+    typeSelected.some(
+      (type) =>
+        meal.strCategory.toLowerCase().includes(type.toLowerCase()) ||
+        (meal.strTags &&
+          meal.strTags.toLowerCase().includes(type.toLowerCase())) ||
+          meal.strMeal.toLowerCase().includes(type.toLowerCase())
+    )
+  );
 
-      const selected = [
-        ...document.querySelectorAll('input[name="type"]:checked'),
-      ].map((checkbox) => checkbox.value);
-      typeSelected = selected;
-      console.log("typeSelected", typeSelected);
-
-      const foundTypes = meals.filter((meal) =>
-        typeSelected.some(
-          (type) =>
-            meal.strCategory.toLowerCase().includes(type.toLowerCase()) ||
-            (meal.strTags &&
-              meal.strTags.toLowerCase().includes(type.toLowerCase())) ||
-            meal.strMeal.toLowerCase().includes(type.toLowerCase())
-        )
-      );
-
-      if (foundTypes.length > 0) {
-        foundTypes.forEach((recepi, indice) => {
-          idsGloval.push(recepi.idMeal); 
-          
-        });
-      } else {
-        console.log("No types found");
-      }
-      console.log("idGoval!!!!", idsGloval);
-
+  if (foundTypes.length > 0) {
+    foundTypes.forEach((recepi, indice) => {
+      idsAfterType.push(recepi); 
+    });
+  } else {
+    console.log("No types found");
+    idsAfterType = idsAfterCountry;
+  }
+  console.log("idsAfterType!!!!", idsAfterType);
 // }
+
+loadAllRecipes () ;
+
 
  } //end function runSerch
 
-// document.querySelectorAll(".checkBoxType").forEach((checkbox) => {
-//   checkbox.addEventListener("change", (event) => {
-//     if (event.target.checked) {
-//       const selected = [
-//         ...document.querySelectorAll('input[name="type"]:checked'),
-//       ].map((checkbox) => checkbox.value);
-//       typeSelected = selected; // Muestra en consola el array con los valores seleccionados
-//       console.log("typeSelected", typeSelected);
 
-//       const foundTypes = meals.filter((meal) =>
-//         typeSelected.some(
-//           (type) =>
-//             meal.strCategory.toLowerCase().includes(type.toLowerCase()) ||
-//             (meal.strTags &&
-//               meal.strTags.toLowerCase().includes(type.toLowerCase())) ||
-//             meal.strMeal.toLowerCase().includes(type.toLowerCase())
-//         )
-//       );
-
-//       if (foundTypes.length > 0) {
-//         console.log("Types found!!!", foundTypes);
-
-//         foundTypes.forEach((recepi, indice) => {
-//           idType.push(recepi.idMeal); // Guarda el índice si es par
-//           console.log("idType!!!!", idType);
-//         });
-//       } else {
-//         console.log("No types found");
-//       }
-//     }
-//   });
-// });
 
 
 
 // Button-------------------------------------------------------------------------------------
 const buttonSearch = document.getElementById("buttonSearchRecipe");
-buttonSearch.addEventListener("click", loadAllRecipes);
+buttonSearch.addEventListener("click", runCheck); 
+// runCheck
 
-const buttonSearch2 = document.getElementById("buttonSearchRecipe2");
-buttonSearch2.addEventListener("click", runCheck);
+
+printNoResoultsFound
+
 
 // Show final array by index------------------------------------------------------------------
 
 // Functions----------------------------------------------------------------------------------
 function loadAllRecipes() {
-  
 
-  console.log("Final Arrey!!!", finalArrey);
-  console.log("Meals!!!", meals);
-  console.log("arrayCountryAndVeg!!!", arrayCountryAndVeg);
+
 
   contenedorRecipe.innerHTML = "";
 
-  for (let i = 0; i < meals.length; i++) {
+  for (let i = 0; i < idsAfterType.length; i++) {
     const tituloRecipe = document.createElement("h1");
     const containerRecipe = document.createElement("div");
     const containerCol = document.createElement("div");
@@ -188,19 +158,19 @@ function loadAllRecipes() {
     const titlePreparation = document.createElement("h4");
     const textPreparation = document.createElement("p");
 
-    tituloRecipe.textContent = meals[i].strMeal;
+    tituloRecipe.textContent = idsAfterType[i].strMeal;
     containerRecipe.id = "recipe-container";
     containerRecipe.className = "row";
     containerCol.className = "col-3";
-    imgRecipe.src = meals[i].strMealThumb;
+    imgRecipe.src = idsAfterType[i].strMealThumb;
     containerCol2.className = "col recipe-text";
     containerCol2.id = "recipe-text";
     textType.textContent = "Type";
-    textTypeCont.textContent = meals[i].strCategory + ", " + meals[i].strArea;
+    textTypeCont.textContent = idsAfterType[i].strCategory + ", " + idsAfterType[i].strArea  + ", " + idsAfterType[i].strTags;
     textIngredients.textContent = "Ingredients";
     containerIngredients.id = "containerIngredients";
     titlePreparation.textContent = "Preparation";
-    textPreparation.textContent = meals[i].strInstructions;
+    textPreparation.textContent = idsAfterType[i].strInstructions;
     // containerRecipe.textContent = "Here the text";
 
     document.getElementById("contenedorRecipe").appendChild(tituloRecipe);
@@ -263,38 +233,18 @@ function loadAllRecipes() {
 }
 
 
+function printNoResoultsFound() {
 
-///////////////////////////////////// Tools finded /////////////////////////////////////////////
+    contenedorRecipe.innerHTML = "";
 
-// encontrar exactamente un elemento en comun dentro de dos array--------------------------------
-// function findSelected (){
-//   const findedTypes = meals.filter(meal => typeSelected.includes(meal.strCategory));
-//   if (findedTypes.length > 0) {
-//       console.log("types finded:!!!!!", findedTypes);
-//   } else {
-//       console.log("not types finded");
-//   }
-//   }
+    const NoRecipesFound = document.createElement("h1");
 
-// Function find words in arrays ---------------------------------------------------------
-// function findSelected() {
-//   const foundTypes = meals.filter(meal =>
-//     typeSelected.some(type =>
-//       (meal.strCategory.toLowerCase().includes(type.toLowerCase()) ||
-//       (meal.strTags && meal.strTags.toLowerCase().includes(type.toLowerCase())) ||
-//       meal.strMeal.toLowerCase().includes(type.toLowerCase()))
-//     )
-//   );
+    NoRecipesFound.textContent = "No Recipes Found";
+    contenedorRecipe.appendChild(NoRecipesFound); 
 
-//   if (foundTypes.length > 0) {
-//     console.log("Types found!!!", foundTypes);
+    console.log ("Im doing it");
 
-//     foundTypes.forEach((recepi, indice) => {
-//       idType.push(recepi.idMeal); // Guarda el índice si es par
-//       console.log ("idType!!!!", idType);
-//    });
+}
 
-//   } else {
-//     console.log("No types found");
-//   }
-// }
+
+
