@@ -1,8 +1,8 @@
 let meals = [];
 
 fetch("https://www.themealdb.com/api/json/v1/1/search.php?s=")
-  .then(response => response.json())
-  .then(data => {
+  .then((response) => response.json())
+  .then((data) => {
     if (data.meals) {
       meals = data.meals;
       console.log("Data Meals:", meals);
@@ -11,27 +11,19 @@ fetch("https://www.themealdb.com/api/json/v1/1/search.php?s=")
       console.log("No se encontraron recetas.");
     }
   })
-  .catch(error => console.error("Error al obtener los datos:", error));
+  .catch((error) => console.error("Error al obtener los datos:", error));
+let indice = [];
+function mostrarReceta(meals) {
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get("id"); // Obtenemos el índice desde la URL
+  console.log("ID recibido:", id);
 
-
-
-  function mostrarReceta(meals) {
-    const params = new URLSearchParams(window.location.search);
-    const i = params.get("id"); // Obtenemos el índice desde la URL
-    console.log("ID recibido:", i);
-  
-    if (!i || isNaN(i) || i < 0 || i >= meals.length) {
-      console.error("ID no válido");
-      return;
+  meals.forEach((recepi, ind) => {
+    if (recepi.idMeal == id) {
+      indice = ind;
+      console.log("Find Recipe!!", recepi.idMeal, ind);
     }
-  
-    // const meal1 = meals[i]; // Obtener la receta específica
-    // console.log("Receta seleccionada:", meal1);
-
-
-
-
-
+  });
 
   const tituloRecipe = document.createElement("h1");
   const containerRecipe = document.createElement("div");
@@ -45,23 +37,21 @@ fetch("https://www.themealdb.com/api/json/v1/1/search.php?s=")
   const titlePreparation = document.createElement("h4");
   const textPreparation = document.createElement("p");
 
-  tituloRecipe.textContent = meals[i].strMeal;
+  tituloRecipe.textContent = meals[indice].strMeal;
   containerRecipe.id = "recipe-container";
   containerRecipe.className = "row";
   containerCol.className = "col-3";
-  imgRecipe.src = meals[i].strMealThumb;
+  imgRecipe.src = meals[indice].strMealThumb;
   containerCol2.className = "col recipe-text";
   containerCol2.id = "recipe-text";
   textType.textContent = "Type";
   textTypeCont.textContent =
-    meals[i].strCategory + ", " + meals[i].strArea + ", " + meals[i].strTags;
+    meals[indice].strCategory + ", " + meals[indice].strArea + ", " + meals[indice].strTags;
   textIngredients.textContent = "Ingredients";
   containerIngredients.id = "containerIngredients";
   titlePreparation.textContent = "Preparation";
-  textPreparation.textContent = meals[i].strInstructions;
+  textPreparation.textContent = meals[indice].strInstructions;
   // containerRecipe.textContent = "Here the text";
-
-
 
   document.getElementById("contenedorRecipe").appendChild(tituloRecipe);
   document.getElementById("contenedorRecipe").appendChild(containerRecipe);
@@ -120,4 +110,3 @@ fetch("https://www.themealdb.com/api/json/v1/1/search.php?s=")
     containerIngredients.appendChild(tri);
   } // end ingredients table loop
 }
-

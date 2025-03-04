@@ -183,7 +183,7 @@ function loadAllRecipes() {
     // containerRecipe.textContent = "Here the text";
 
     button.onclick = () => {
-      window.open(`recipe.html?id=${i}`, "_blank");
+      window.open(`recipe.html?id=${idsAfterType[i].idMeal}`, "_blank");
     };
 
     document.getElementById("contenedorRecipe").appendChild(tituloRecipe);
