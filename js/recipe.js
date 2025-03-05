@@ -12,9 +12,7 @@ fetch("https://www.themealdb.com/api/json/v1/1/search.php?s=")
     }
   })
   .catch((error) => console.error("Error al obtener los datos:", error));
-  
 let indice = [];
-
 function showContent(meals) {
   const params = new URLSearchParams(window.location.search);
   const id = params.get("id"); // Obtenemos el índice desde la URL

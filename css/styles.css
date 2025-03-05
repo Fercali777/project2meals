@@ -6,7 +6,7 @@ header {
     padding: 50px 0px 50px 0px;
 }
 
-#buttonSearchRecipe {
+#buttonSearchRecipe, button  {
     
     background-color: #FFBF07;
     border-radius: 10px;
@@ -17,8 +17,24 @@ header {
     line-height: 28px;
     font-weight: 300;
     margin-top: 20px ;
+    max-width: 300px;
+    padding: 0px 30px 0px 30px;
 
+}
+select {
+    background-color: #FFF3DF;
+    border: none;
+    padding: 4px;
+    border-radius: 10px;
+    font-family: "Poppins", Arial, Helvetica, sans-serif;
+    color: #264653;
+    font-size: 16px;
+    line-height: 28px;
+    font-weight: 300;
+}
 
+option {
+border: none;
 
 }
 
@@ -29,8 +45,11 @@ header {
 .space-between{
     justify-content: space-between;
 }
+.space-evenly{
+    justify-content: space-evenly;
+}
 .center{
-    align-items: center;
+    justify-content: center;
 }
 
 /* Components ------------------------------------------------------------------------- */
@@ -56,7 +75,7 @@ header {
 }
 .img-home img {
     min-width: 200px;
-    max-height: 500px;
+    max-height: 300px;
 }
 .form-home{
     flex-direction: column;
@@ -164,6 +183,12 @@ th {
 }
 td{background-color: #f5e6cd;}
 
+.form-home > h1, 
+.form-home > h4 {
+
+    text-align: center;
+}
+
 
 
 
@@ -178,7 +203,7 @@ Small devices (landscape phones, 576px and up) */
         font-family: "Poppins", Arial, Helvetica, sans-serif;
         color: #FFBF07;
         font-size: 54px;
-        line-height: 62px;
+        line-height: 60px;
         font-weight:700;
     }
     h2 {
@@ -207,13 +232,17 @@ Small devices (landscape phones, 576px and up) */
 
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) { 
-
+    .img-home img {
+        max-height: 300px;
+    }
  }
 
 /*  Large devices (desktops, 992px and up) */
 @media (min-width: 992px) { 
 
-    
+    .img-home img {
+        max-height: 400px;
+    }
     
 }
 
@@ -222,8 +251,8 @@ Small devices (landscape phones, 576px and up) */
     h1 {
         font-family: "Poppins", Arial, Helvetica, sans-serif;
         color: #FFBF07;
-        font-size: 64px;
-        line-height: 72px;
+        font-size: 60px;
+        line-height: 67px;
         font-weight:700;
     }
     h2 {
@@ -241,14 +270,38 @@ Small devices (landscape phones, 576px and up) */
     }
     h4 {
         font-family: "Libre Baskerville", serif;
-        font-size: 36px;
-        line-height: 44px;
+        font-size: 30px;
+        line-height: 38px;
         font-weight: normal;
         margin-top: 20px;
     }
-    
+    .img-home img {
+        max-height: 500px;
+    }
+
 
 }
 
 /* X-Large devices (larger desktops, 1400px and up) */
-@media (min-width: 1400px) { ... }
+@media (min-width: 1400px) { 
+    h1 {
+        font-family: "Poppins", Arial, Helvetica, sans-serif;
+        color: #FFBF07;
+        font-size: 67px;
+        line-height: 75px;
+        font-weight:700;
+    }
+
+    h4 {
+        font-family: "Libre Baskerville", serif;
+        font-size: 35px;
+        line-height: 42px;
+        font-weight: normal;
+        margin-top: 23px;
+    }
+    .img-home img {
+        max-height: 600px;
+    }
+
+
+ }

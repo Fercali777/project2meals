@@ -25,37 +25,36 @@
       <div class="row">
         <nav class="menu1 flex col">
           <a href="index.html">HOME</a>
-          <a href="#">RECEPIES</a>
+          
         </nav>
         <div class="logo col-2 flex">
-          <img src="img/logo-Spoon&Whisk.png" />
+          <a href="index.html"><img alt="logo-Spoon&Whisk" src="img/logo-Spoon&Whisk.png" /></a>
         </div>
         <nav class="menu1 flex col">
-          <a href="#">FAVORITES</a>
-          <a href="#">BLOG</a>
+          <a href="recipes.html">RECIPES</a>
         </nav>
       </div>
     </header>
     <div class="container" id="container">
       <div class="row">
         <div class="col flex img-home">
-          <img src="img/disch.png" />
+          <img alt="Spoon&Whisk home image" src="img/disch.png" />
         </div>
         <div class="col form-home flex">
           <h1>what are we going to eat today?</h1>
           <h4>Vegetarian / Non</h4>
-          <div class="flex space-between">
-            <span>Vegetarian</span>
-            <input type="radio" id="radioVegetarian" name="radioVegNon" value="radioVeg" />
-            <span>Omnivore</span>
-            <input type="radio" id="radioOmnivore" name="radioVegNon" value="radioNonVeg"/>
+          <div class="flex space-evenly">
+            <Label><span>Vegetarian</span>
+            <input type="radio" id="radioVegetarian" name="radioVegNon" value="radioVeg" /></Label>
+            <Label><span>Omnivore</span>
+            <input type="radio" id="radioOmnivore" name="radioVegNon" value="radioNonVeg"/></Label>
           </div>
           <h4>Country Style</h4>
           <select id="selectCountry">
             <option></option>
           </select>
           <h4>Type</h4>
-          <div class="flex space-between">
+          <div class="flex space-evenly">
             <label class="flex center">
               <input class="checkBoxType" type="checkbox" name="type" value="Snack" />
               <span> Snack</span>
@@ -73,8 +72,9 @@
               <span> Side</span>
             </label>
           </div>
-          
+        <div class="flex center">
           <button id="buttonSearchRecipe"> Search</button>
+        </div>
 
           
 
@@ -83,33 +83,7 @@
       </div>
       <!-- <h2>Titulo producto</h2> -->
       <div class="row" id="recipe-container">
-        <!-- <div class="col-3">
-          <img src="https://www.themealdb.com/images/media/meals/g046bb1663960946.jpg " alt="" />
-        </div>
-        <div class="col recipe-text">
-          <h3>Type</h3> 
-          <h5>Non Vegetarian, Seafood, Japanese Preparation</h5> 
-          <p>STEP 1 TO MAKE
-          SUSHI ROLLS: Pat out some rice. Lay a nori sheet on the mat,
-          shiny-side down. Dip your hands in the vinegared water, then pat
-          handfuls of rice on top in a 1cm thick layer, leaving the furthest
-          edge from you clear.
-          </p>
-          <table class="tableIngredients">
-            <tr>
-              <th>Ingredient</th>
-              <th>Measure</th>
-            </tr>
-            <tr>
-              <td>Ingredient 1</td>
-              <td>Measure 1</td>
-            </tr>
-            <tr>
-              <td>Ingredient 2</td>
-              <td>Measure 2</td>
-            </tr>
-          </table>
-        </div> -->
+
       </div>
       
     </div><!--container -->
@@ -120,25 +94,8 @@
 
 
     
-    <!-- <div class="container">
-      <div class="row">
 
-        <h1 id="javaH1"></h1> -->
-
-        <!-- <table>
-          <thead>
-            <tr>
-              <th>Id</th>
-              <th>Name</th>
-              <th>Category</th>
-            </tr>
-          </thead>
-           <tbody id="tbody">
-          </tbody>
-        </table> -->
-
-      <!-- </div>
-    </div> -->
+    </div> 
 
     <footer>All rights reserved</footer>
     <!-- Bootstrap Javascript -->
@@ -147,7 +104,7 @@
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
-    <!-- <script src="js/database1.js"></script> -->
+    <script src="js/database1.js"></script> -->
     <script src="js/main.js"></script>
     <!-- <script src="js/pruebas.js"></script> -->
   </body>

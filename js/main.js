@@ -1,19 +1,19 @@
-let meals = [];
+// let meals = [];
 
-fetch("https://www.themealdb.com/api/json/v1/1/search.php?s=")
-  .then((response) => response.json())
-  .then((data) => {
-    if (data.meals) {
-      meals = data.meals;
-      console.log("Data Meals:", meals);
-      showContent(meals);
-    } else {
-      console.log("No se encontraron recetas.");
-    }
-  })
-  .catch((error) => console.error("Error al obtener los datos:", error));
+// fetch("https://www.themealdb.com/api/json/v1/1/search.php?s=")
+//   .then((response) => response.json())
+//   .then((data) => {
+//     if (data.meals) {
+//       meals = data.meals;
+//       console.log("Data Meals:", meals);
+//       showContent(meals);
+//     } else {
+//       console.log("No recipes found");
+//     }
+//   })
+//   .catch((error) => console.error("Error finding data:", error));
 
-function showContent(meals) {
+// function showContent(meals) {
 
 
 // Variables ------------------------------------------------------------------------------
@@ -152,7 +152,7 @@ function loadAllRecipes() {
 
   for (let i = 0; i < idsAfterType.length; i++) {
     const button = document.createElement("button");
-    button.textContent = "Ver más";
+    button.textContent = "See preparation";
 
     const tituloRecipe = document.createElement("h1");
     const containerRecipe = document.createElement("div");
@@ -163,8 +163,8 @@ function loadAllRecipes() {
     const textTypeCont = document.createElement("h5");
     const textIngredients = document.createElement("h4");
     const containerIngredients = document.createElement("div");
-    const titlePreparation = document.createElement("h4");
-    const textPreparation = document.createElement("p");
+    // const titlePreparation = document.createElement("h4");
+    // const textPreparation = document.createElement("p");
 
     tituloRecipe.textContent = idsAfterType[i].strMeal;
     containerRecipe.id = "recipe-container";
@@ -180,12 +180,12 @@ function loadAllRecipes() {
       idsAfterType[i].strTags;
     textIngredients.textContent = "Ingredients";
     containerIngredients.id = "containerIngredients";
-    titlePreparation.textContent = "Preparation";
-    textPreparation.textContent = idsAfterType[i].strInstructions;
-    // containerRecipe.textContent = "Here the text";
+    // titlePreparation.textContent = "Preparation";
+    // textPreparation.textContent = idsAfterType[i].strInstructions;
+
 
     button.onclick = () => {
-      window.open(`recipe.html?id=${idsAfterType[i].idMeal}`, "_blank");
+      window.open(`recipe.html?id=${idsAfterType[i].idMeal}`, "_self");
     };
 
     document.getElementById("contenedorRecipe").appendChild(tituloRecipe);
@@ -197,8 +197,8 @@ function loadAllRecipes() {
     document.getElementById("recipe-text").appendChild(textTypeCont);
     document.getElementById("recipe-text").appendChild(textIngredients);
     document.getElementById("recipe-text").appendChild(containerIngredients);
-    document.getElementById("recipe-text").appendChild(titlePreparation);
-    document.getElementById("recipe-text").appendChild(textPreparation);
+    // document.getElementById("recipe-text").appendChild(titlePreparation);
+    // document.getElementById("recipe-text").appendChild(textPreparation);
 
     containerRecipe.appendChild(containerCol);
     containerRecipe.appendChild(containerCol2);
@@ -265,4 +265,4 @@ function printNoResoultsFound() {
 
 
 
-} // end function showContent
+//  } // end function showContent
