@@ -1,19 +1,19 @@
-// let meals = [];
+let meals = [];
 
-// fetch("https://www.themealdb.com/api/json/v1/1/search.php?s=")
-//   .then((response) => response.json())
-//   .then((data) => {
-//     if (data.meals) {
-//       meals = data.meals;
-//       console.log("Data Meals:", meals);
-//       showContent(meals);
-//     } else {
-//       console.log("No recipes found");
-//     }
-//   })
-//   .catch((error) => console.error("Error finding data:", error));
+fetch("https://www.themealdb.com/api/json/v1/1/search.php?s=")
+  .then((response) => response.json())
+  .then((data) => {
+    if (data.meals) {
+      meals = data.meals;
+      console.log("Data Meals:", meals);
+      showContent(meals);
+    } else {
+      console.log("No recipes found");
+    }
+  })
+  .catch((error) => console.error("Error finding data:", error));
 
-// function showContent(meals) {
+function showContent(meals) {
 
 
 // Variables ------------------------------------------------------------------------------
@@ -29,7 +29,6 @@ let idsAfterType = [];
 
 const radioVeg = document.getElementById("radioVegetarian");
 const radioNonVeg = document.getElementById("radioOmnivore");
-
 const checkbox = document.querySelector("radioVeg");
 
 // generate and draw Countries menu -------------------------------------
@@ -45,6 +44,9 @@ setAndSortCountries.forEach((country) => {
 });
 
 function runCheck() {
+  filterVeg ();
+  function filterVeg (){
+
   idVeg = [];
   idOmn = [];
   idsGloval = [];
@@ -74,8 +76,14 @@ function runCheck() {
     idsGloval = meals;
     console.log("recepi.idMeal NEW!!!!!", idsGloval);
   }
+  filterCountry()
+
+}
 
   // Selec country-------------------------------------------------------------------------------------
+
+
+  function filterCountry() {
 
   const select = document.querySelector("#selectCountry");
   // function runCheckCountry() {
@@ -95,13 +103,14 @@ function runCheck() {
 
   console.log("ID Country", idsAfterCountry);
 
-  // };
+  filterType()
+}
 
+ 
   // Select Type--------------------------------------------------------------------------------
 
-  const idType = []; // IDs>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-  //  function runCheckType(){
+ 
+function filterType(){
 
   const selected = [
     ...document.querySelectorAll('input[name="type"]:checked'),
@@ -128,7 +137,7 @@ function runCheck() {
     idsAfterType = idsAfterCountry;
   }
   console.log("idsAfterType!!!!", idsAfterType);
-  // }
+ }
 
   loadAllRecipes();
 } //end function runSerch
@@ -265,4 +274,4 @@ function printNoResoultsFound() {
 
 
 
-//  } // end function showContent
+ } // end function showContent

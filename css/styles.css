@@ -302,6 +302,17 @@ Small devices (landscape phones, 576px and up) */
     .img-home img {
         max-height: 600px;
     }
+    #buttonSearchRecipe, button  {
+    
+       
+        font-size: 22px;
+        line-height: 28px;
+        font-weight: 300;
+        margin-top: 25px ;
+        max-width: 300px;
+        padding: 5px 30px 5px 30px;
+    
+    }
 
 
  }
