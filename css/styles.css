@@ -1,318 +1,349 @@
-
 body {
-    background-color: #638212 ;
+  background-color: #638212;
 }
 header {
-    padding: 50px 0px 50px 0px;
+  padding: 50px 0px 50px 0px;
 }
 
-#buttonSearchRecipe, button  {
-    
-    background-color: #FFBF07;
-    border-radius: 10px;
-    border: none;
-    font-family: "Poppins", Arial, Helvetica, sans-serif;
-    color: #264653;
-    font-size: 16px;
-    line-height: 28px;
-    font-weight: 300;
-    margin-top: 20px ;
-    max-width: 300px;
-    padding: 0px 30px 0px 30px;
-
+#buttonSearchRecipe,
+button {
+  background-color: #ffbf07;
+  border-radius: 10px;
+  border: none;
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+  color: #264653;
+  font-size: 16px;
+  line-height: 28px;
+  font-weight: 300;
+  margin-top: 20px;
+  max-width: 300px;
+  padding: 0px 30px 0px 30px;
 }
+
 select {
-    background-color: #FFF3DF;
-    border: none;
-    padding: 4px;
-    border-radius: 10px;
-    font-family: "Poppins", Arial, Helvetica, sans-serif;
-    color: #264653;
-    font-size: 16px;
-    line-height: 28px;
-    font-weight: 300;
+  background-color: #fff3df;
+  border: none;
+  padding: 4px;
+  border-radius: 10px;
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+  color: #264653;
+  font-size: 16px;
+  line-height: 28px;
+  font-weight: 300;
+  min-width: 350px;
 }
 
 option {
-border: none;
-
+  border: none;
 }
 
 /* Flexbox----------------------------------------------------------------------- */
 .flex {
-    display: flex;
+  display: flex;
 }
-.space-between{
-    justify-content: space-between;
+.space-between {
+  justify-content: space-between;
 }
-.space-evenly{
-    justify-content: space-evenly;
+.space-evenly {
+  justify-content: space-evenly;
 }
-.center{
-    justify-content: center;
+.center {
+  justify-content: center;
 }
 
 /* Components ------------------------------------------------------------------------- */
 .logo {
-    justify-content: center;
-  
+  justify-content: center;
 }
 .logo img {
-    max-height: 75px;
-    width: auto;
+  max-height: 75px;
+  width: auto;
 }
 .menu1 {
-    justify-content: space-evenly;
-    align-items: center ;
+  justify-content: space-evenly;
+  align-items: center;
 }
 .menu1 a {
-    color: #FFF3DF;
-    text-decoration: none;
-    font-family: Poppins, Arial, Helvetica, sans-serif;   
+  color: #fff3df;
+  text-decoration: none;
+  font-family: Poppins, Arial, Helvetica, sans-serif;
 }
-.img-home{
-    justify-content: center;
+.img-home {
+  justify-content: center;
 }
 .img-home img {
-    min-width: 200px;
-    max-height: 300px;
+  min-width: 200px;
+  max-height: 300px;
 }
-.form-home{
-    flex-direction: column;
+.form-home {
+  flex-direction: column;
 }
 
 footer {
-    color: #FFF3DF;
-    text-align: center;
-    margin-top: 40px;
-    padding: 15px;
+  color: #fff3df;
+  text-align: center;
+  margin-top: 40px;
+  padding: 15px;
 }
-
 
 /* Java afects ----------------------------------------------------------------------------- */
 #recipe-container {
-    background-color: #FFF3DF;
-    margin-bottom: 40px;
-    border-radius: 10px;
+  background-color: #fff3df;
+  margin-bottom: 40px;
+  border-radius: 10px;
 }
-#recipe-container img{
-   max-width: 100%;
-   height: auto;
+#recipe-container img {
+  max-width: 100%;
+  height: auto;
 }
-#recipe-container> :first-child {
-    padding-left:0px;
+#recipe-container > :first-child {
+  padding-left: 0px;
 }
 .recipe-text {
-    padding:30px;
+  padding: 30px;
 }
-
-
 
 /* Fonts --------------------------------------------------------------------------------- */
 
 h1 {
-    font-family: "Poppins", Arial, Helvetica, sans-serif;
-    color: #FFBF07;
-    font-size: 64px;
-    line-height: 72px;
-    font-weight:700;
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+  color: #ffbf07;
+  font-size: 64px;
+  line-height: 72px;
+  font-weight: 700;
 }
 h2 {
-    font-family: "Poppins", Arial, Helvetica, sans-serif;
-    color: #FFBF07;
-    font-size: 56px;
-    line-height: 72px;
-    font-weight: 600;
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+  color: #ffbf07;
+  font-size: 56px;
+  line-height: 72px;
+  font-weight: 600;
 }
 
 h3 {
-    font-family: "Libre Baskerville", serif;
-    color: #264653;
-    font-size: 44px;
-    line-height: 62px;
-    font-weight: normal;
+  font-family: "Libre Baskerville", serif;
+  color: #264653;
+  font-size: 44px;
+  line-height: 62px;
+  font-weight: normal;
 }
 
 h4 {
-    font-family: "Libre Baskerville", serif;
-    color: #264653;
-    font-size: 36px;
-    line-height: 44px;
-    font-weight: normal;
-    margin-top: 20px;
+  font-family: "Libre Baskerville", serif;
+  color: #264653;
+  font-size: 36px;
+  line-height: 44px;
+  font-weight: normal;
+  margin-top: 20px;
 }
 
 h5 {
-    font-family: "Poppins", Arial, Helvetica, sans-serif;
-    color: #264653;
-    font-size: 21px;
-    line-height: 29px;
-    font-weight: normal;
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+  color: #264653;
+  font-size: 21px;
+  line-height: 29px;
+  font-weight: normal;
 }
 
 p {
-    font-family: "Poppins", Arial, Helvetica, sans-serif;
-    color: #264653;
-    font-size: 16px;
-    line-height: 28px;
-    font-weight: 300;
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+  color: #264653;
+  font-size: 16px;
+  line-height: 28px;
+  font-weight: 300;
 }
 span {
-    font-family: "Poppins", Arial, Helvetica, sans-serif;
-    color: #264653;
-    font-size: 16px;
-    line-height: 28px;
-    font-weight: 300;
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+  color: #264653;
+  font-size: 16px;
+  line-height: 28px;
+  font-weight: 300;
 }
-.form-home  h4, span{
-    color: #FFF3DF;
+.form-home h4,
+span {
+  color: #fff3df;
 }
 
-td, th {
-    
-    font-family: "Poppins", Arial, Helvetica, sans-serif;
-    color: #264653;
-    font-size: 16px;
-    line-height: 28px;
-    font-weight: 300;
-    padding: 5px 15px 2px 15px;
+td,
+th {
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+  color: #264653;
+  font-size: 16px;
+  line-height: 28px;
+  font-weight: 300;
+  padding: 5px 15px 2px 15px;
 }
 
 th {
-    font-weight: bold;
+  font-weight: bold;
 }
-td{background-color: #f5e6cd;}
+td {
+  background-color: #f5e6cd;
+}
 
-.form-home > h1, 
+.form-home > h1,
 .form-home > h4 {
-
-    text-align: center;
+  text-align: center;
 }
 
+/* Animations ----------------------------------------------------------------------------------------- */
 
+@keyframes displace {
+  from {
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes displace-right-left {
+  from {
+    transform: translateX(-40px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
 
+@keyframes displace-left-right {
+  from {
+    transform: translateX(40px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
 
+#recipe-container {
+  animation: displace 0.7s ease-out;
+}
+
+.img-home {
+  animation: displace-right-left 0.5s ease-out;
+}
+.form-home {
+  animation: displace-left-right 0.5s ease-out;
+}
+#contenedorRecipe > h1 {
+  animation: displace-right-left 0.7s ease-out;
+}
 
 /* Breakpoints ------------------------------------------------------------------------------------- */
 /* X-Small devices (portrait phones, less than 576px)
 No media query for `xs` since this is the default in Bootstrap
 Small devices (landscape phones, 576px and up) */
 
-@media (min-width: 576px) { 
-    h1 {
-        font-family: "Poppins", Arial, Helvetica, sans-serif;
-        color: #FFBF07;
-        font-size: 54px;
-        line-height: 60px;
-        font-weight:700;
-    }
-    h2 {
-        font-family: "Poppins", Arial, Helvetica, sans-serif;
-        color: #FFBF07;
-        font-size: 46px;
-        line-height: 52px;
-        font-weight: 600;
-    }
-    h3 {
-        font-family: "Libre Baskerville", serif;
-        font-size: 34px;
-        line-height: 52px;
-        font-weight: normal;
-    }
-    h4 {
-        font-family: "Libre Baskerville", serif;
-        font-size: 26px;
-        line-height: 34px;
-        font-weight: normal;
-        margin-top: 20px;
-    }
-    
-
- }
+@media (min-width: 576px) {
+  h1 {
+    font-family: "Poppins", Arial, Helvetica, sans-serif;
+    color: #ffbf07;
+    font-size: 54px;
+    line-height: 60px;
+    font-weight: 700;
+  }
+  h2 {
+    font-family: "Poppins", Arial, Helvetica, sans-serif;
+    color: #ffbf07;
+    font-size: 46px;
+    line-height: 52px;
+    font-weight: 600;
+  }
+  h3 {
+    font-family: "Libre Baskerville", serif;
+    font-size: 34px;
+    line-height: 52px;
+    font-weight: normal;
+  }
+  h4 {
+    font-family: "Libre Baskerville", serif;
+    font-size: 26px;
+    line-height: 34px;
+    font-weight: normal;
+    margin-top: 20px;
+  }
+}
 
 /* Medium devices (tablets, 768px and up) */
-@media (min-width: 768px) { 
-    .img-home img {
-        max-height: 300px;
-    }
- }
+@media (min-width: 768px) {
+  .img-home img {
+    max-height: 300px;
+  }
+}
 
 /*  Large devices (desktops, 992px and up) */
-@media (min-width: 992px) { 
-
-    .img-home img {
-        max-height: 400px;
-    }
-    
+@media (min-width: 992px) {
+  .img-home img {
+    max-height: 400px;
+  }
 }
 
 /* X-Large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
-    h1 {
-        font-family: "Poppins", Arial, Helvetica, sans-serif;
-        color: #FFBF07;
-        font-size: 60px;
-        line-height: 67px;
-        font-weight:700;
-    }
-    h2 {
-        font-family: "Poppins", Arial, Helvetica, sans-serif;
-        color: #FFBF07;
-        font-size: 56px;
-        line-height: 72px;
-        font-weight: 600;
-    }
-    h3 {
-        font-family: "Libre Baskerville", serif;
-        font-size: 44px;
-        line-height: 62px;
-        font-weight: normal;
-    }
-    h4 {
-        font-family: "Libre Baskerville", serif;
-        font-size: 30px;
-        line-height: 38px;
-        font-weight: normal;
-        margin-top: 20px;
-    }
-    .img-home img {
-        max-height: 500px;
-    }
-
-
+  h1 {
+    font-family: "Poppins", Arial, Helvetica, sans-serif;
+    color: #ffbf07;
+    font-size: 60px;
+    line-height: 67px;
+    font-weight: 700;
+  }
+  h2 {
+    font-family: "Poppins", Arial, Helvetica, sans-serif;
+    color: #ffbf07;
+    font-size: 56px;
+    line-height: 72px;
+    font-weight: 600;
+  }
+  h3 {
+    font-family: "Libre Baskerville", serif;
+    font-size: 44px;
+    line-height: 62px;
+    font-weight: normal;
+  }
+  h4 {
+    font-family: "Libre Baskerville", serif;
+    font-size: 30px;
+    line-height: 38px;
+    font-weight: normal;
+    margin-top: 20px;
+  }
+  .img-home img {
+    max-height: 500px;
+  }
 }
 
 /* X-Large devices (larger desktops, 1400px and up) */
-@media (min-width: 1400px) { 
-    h1 {
-        font-family: "Poppins", Arial, Helvetica, sans-serif;
-        color: #FFBF07;
-        font-size: 67px;
-        line-height: 75px;
-        font-weight:700;
-    }
+@media (min-width: 1400px) {
+  h1 {
+    font-family: "Poppins", Arial, Helvetica, sans-serif;
+    color: #ffbf07;
+    font-size: 67px;
+    line-height: 75px;
+    font-weight: 700;
+  }
 
-    h4 {
-        font-family: "Libre Baskerville", serif;
-        font-size: 35px;
-        line-height: 42px;
-        font-weight: normal;
-        margin-top: 23px;
-    }
-    .img-home img {
-        max-height: 600px;
-    }
-    #buttonSearchRecipe, button  {
-    
-       
-        font-size: 22px;
-        line-height: 28px;
-        font-weight: 300;
-        margin-top: 25px ;
-        max-width: 300px;
-        padding: 5px 30px 5px 30px;
-    
-    }
-
-
- }
+  h4 {
+    font-family: "Libre Baskerville", serif;
+    font-size: 35px;
+    line-height: 42px;
+    font-weight: normal;
+    margin-top: 23px;
+  }
+  .img-home img {
+    max-height: 600px;
+  }
+  #buttonSearchRecipe,
+  button {
+    font-size: 22px;
+    line-height: 28px;
+    font-weight: 300;
+    margin-top: 25px;
+    max-width: 300px;
+    padding: 5px 30px 5px 30px;
+  }
+}

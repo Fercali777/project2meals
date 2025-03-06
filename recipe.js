@@ -12,7 +12,7 @@ fetch("https://www.themealdb.com/api/json/v1/1/search.php?s=")
     }
   })
   .catch((error) => console.error("Error al obtener los datos:", error));
-  
+
 let indice = [];
 
 function showContent(meals) {
@@ -54,8 +54,17 @@ function showContent(meals) {
   textIngredients.textContent = "Ingredients";
   containerIngredients.id = "containerIngredients";
   titlePreparation.textContent = "Preparation";
+
+  // let preparationText = meals[indice].strInstructions;
+
   textPreparation.textContent = meals[indice].strInstructions;
-  // containerRecipe.textContent = "Here the text";
+
+
+  // const 
+
+  // const textoHTML = texto.replaceAll('\r\n', '<br>');
+
+
 
 
   button.onclick = () => {
